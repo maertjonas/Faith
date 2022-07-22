@@ -1,8 +1,11 @@
 ﻿using Ardalis.GuardClauses;
+using Domain.Common;
+using Faith.Shared.RoleTypes;
+using Faith.Shared.Gender;
 
 namespace Domain.Users
 {
-    public class User
+    public class User : Entity
     {
         private string firstName;
         public string FirstName
@@ -31,7 +34,18 @@ namespace Domain.Users
         private DateTime dateOfBirth;
         public DateTime DateOfBirth { get; set; }
 
+        private RoleType roleType;
+        public RoleType RoleType
+        {
+            get { return roleType; }
+            set { roleType = Guard.Against.EnumOutOfRange(value, nameof(roleType)); }
+        }
 
-
+        private Gender gender;
+        public Gender Gender
+        {
+            get { return gender; }
+            set { gender = Guard.Against.EnumOutOfRange(value, nameof(gender)); }
+        }
     }
 }
