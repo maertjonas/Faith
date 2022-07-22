@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Ardalis.GuardClauses;
+using Domain.Comments;
+using Domain.Common;
 
 namespace Domain.Posts
 {
-    public class Post
+    public class Post : Entity
     {
         private bool pinned;
         public bool Pinned { get; set; }
@@ -26,5 +28,7 @@ namespace Domain.Posts
         private string image;
         public string Image { get; set; }
 
+        private List<Comment> comments;
+        public List<Comment> Comments { get; set; }
     }
 }
