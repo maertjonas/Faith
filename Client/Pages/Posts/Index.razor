@@ -2,7 +2,7 @@
 @using Faith.Shared.Posts
 @inject IPostService FakePostService
 
-
+@attribute [Authorize]
 <h1>Posts</h1>
 @if (posts == null)
 {
