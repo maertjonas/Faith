@@ -13,5 +13,11 @@ namespace Faith.Shared.Posts
             public int Id { get; set; }
             public string Text { get; set; }
         }
+        public class Detail: Index
+        {
+            public DateTime Date { get; set; }
+            public bool Archive { get; set; }
+            public bool Pinned { get; set; }
+        }
     }
 }

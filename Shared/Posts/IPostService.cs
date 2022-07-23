@@ -9,5 +9,6 @@ namespace Faith.Shared.Posts
     public interface IPostService
     {
         Task<IEnumerable<PostDto.Index>> GetIndexAsync();
+        Task<PostDto.Detail> GetDetailAsync(int postId);
     }
 }

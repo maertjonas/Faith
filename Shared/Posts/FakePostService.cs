@@ -9,20 +9,37 @@ namespace Faith.Shared.Posts
 {
     public class FakePostService : IPostService
     {
-        private static readonly List<PostDto.Index> _products = new();
+        private static readonly List<PostDto.Detail> _posts = new();
         static FakePostService()
         {
-            var productIds = 0;
-            var productFaker = new Faker<PostDto.Index>("nl")
-            .UseSeed(1337) // Always return the same products
-            .RuleFor(x => x.Id, _ => ++productIds)
-            .RuleFor(x => x.Text, f => f.Commerce.ProductName());
-            _products = productFaker.Generate(25);
+            Random rand = new Random();
+            DateTime start = new DateTime(1995, 1, 1);
+            int range = (DateTime.Today - start).Days;
+            
+            var postIds = 0;
+            var postFaker = new Faker<PostDto.Detail>("nl")
+            .UseSeed(1337) // Always return the same posts
+            .RuleFor(x => x.Id, _ => ++postIds)
+            .RuleFor(x => x.Text, f => f.Commerce.ProductName())
+            .RuleFor(x => x.Archive, _ => rand.NextDouble() >= 0.5)
+            .RuleFor(x => x.Pinned, _ => rand.NextDouble() >= 0.5)
+            .RuleFor(x => x.Date, _ => start.AddDays(rand.Next(range)));
+            _posts = postFaker.Generate(25);
         }
 
         public Task<IEnumerable<PostDto.Index>> GetIndexAsync()
         {
-            return Task.FromResult(_products.AsEnumerable());
+            return Task.FromResult(_posts.Select(x => new PostDto.Index
+            {
+                Id = x.Id,
+                Text = x.Text
+            }));
         }
+
+        public Task<PostDto.Detail> GetDetailAsync(int postId)
+        {
+            return Task.FromResult(_posts.Single(x => x.Id == postId));
+        }
+
     }
 }

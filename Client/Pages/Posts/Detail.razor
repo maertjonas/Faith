@@ -1,0 +1,25 @@
+﻿@page "/post/{id:int}"
+@using Faith.Shared.Posts
+@inject IPostService PostService
+
+@if (post == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h3>@post.Id</h3>
+    <p>@nameof(post.Pinned): @post.Pinned</p>
+    <p>@nameof(post.Archive): @post.Archive</p>
+    <p>@nameof(post.Date): @post.Date</p>
+    <p>@nameof(post.Text): @post.Text</p>
+}
+
+@code {
+    private PostDto.Detail post;
+    [Parameter] public int Id { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        post = await PostService.GetDetailAsync(Id);
+    }    
+}
