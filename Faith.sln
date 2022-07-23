@@ -3,6 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 16.0.0.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faith.Server", "Server\Faith.Server.csproj", "{945DA716-504D-4D23-8D08-7B7AEA63F338}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3B88B46E-4E8C-46DD-8684-49D4684F4C49} = {3B88B46E-4E8C-46DD-8684-49D4684F4C49}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Faith.Client", "Client\Faith.Client.csproj", "{76BC65D0-87BA-4EC2-8F28-9D396AF31D9B}"
 EndProject

@@ -18,8 +18,9 @@ namespace Domain.Posts
         private string text;
         public string Text
         {
-            get { return text; }
-            set { text = Guard.Against.NullOrWhiteSpace(value, nameof(text)); }
+            get; set;
+            //get { return text; }
+            //set { text = Guard.Against.NullOrWhiteSpace(value, nameof(text)); }
         }
 
         private DateTime date;
@@ -30,5 +31,8 @@ namespace Domain.Posts
 
         private List<Comment> comments;
         public List<Comment> Comments { get; set; }
+    
+
+    
     }
 }
