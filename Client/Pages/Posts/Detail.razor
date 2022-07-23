@@ -1,7 +1,8 @@
 ﻿@page "/post/{id:int}"
 @using Faith.Shared.Posts
 @inject IPostService PostService
-
+@inject NavigationManager NavigationManager
+    
 @if (post == null)
 {
     <p><em>Loading...</em></p>
@@ -13,6 +14,9 @@ else
     <p>@nameof(post.Archive): @post.Archive</p>
     <p>@nameof(post.Date): @post.Date</p>
     <p>@nameof(post.Text): @post.Text</p>
+    <AuthorizeView Roles="Administrator">
+        <button class="btn btn-danger" @onclick="DeleteAsync">Delete</button>
+    </AuthorizeView>
 }
 
 @code {
@@ -22,4 +26,10 @@ else
     {
         post = await PostService.GetDetailAsync(Id);
     }    
+
+    private async Task DeleteAsync()
+    {
+        await PostService.DeleteAsync(post.Id);
+        NavigationManager.NavigateTo("/post");
+    }
 }
