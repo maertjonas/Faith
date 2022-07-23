@@ -41,5 +41,12 @@ namespace Faith.Shared.Posts
             return Task.FromResult(_posts.Single(x => x.Id == postId));
         }
 
+        public Task DeleteAsync(int postId)
+        {
+            var postToDelete = _posts.SingleOrDefault(x => x.Id == postId);
+            _posts.Remove(postToDelete);
+            return Task.CompletedTask;
+        }
+
     }
 }
