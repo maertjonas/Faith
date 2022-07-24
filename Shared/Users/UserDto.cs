@@ -14,5 +14,10 @@ namespace Faith.Shared.Users
             public string FirstName { get; set; }
             public string LastName { get; set; }
         }
+
+        public class Detail : Index
+        {
+            public DateTime DateOfBirth { get; set; }
+        }
     }
 }
