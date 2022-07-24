@@ -34,9 +34,9 @@ namespace Faith.Shared.Users
             }));
         }
 
-        public Task<UserDto.Detail> GetDetailAsync()
+        public Task<UserDto.Detail> GetDetailAsync(int userId)
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult(_users.Single(u => u.Id == userId));
         }
     }
 }
