@@ -9,13 +9,13 @@ namespace Faith.Shared.Users
 {
     public class FakeUserService : IUserService
     {
-        private static readonly List<UserDto.Index> _users = new();
+        private static readonly List<UserDto.Detail> _users = new();
 
         static FakeUserService()
         {
             var userIds = 0;
 
-            var userFaker = new Faker<UserDto.Index>("nl")
+            var userFaker = new Faker<UserDto.Detail>("nl")
             .UseSeed(1337)
             .RuleFor(x => x.Id, _ => ++userIds)
             .RuleFor(x => x.FirstName, f => f.Person.FirstName)
@@ -26,7 +26,12 @@ namespace Faith.Shared.Users
 
         public Task<IEnumerable<UserDto.Index>> GetIndexAsync()
         {
-            return Task.FromResult(_users.AsEnumerable());
+            return Task.FromResult(_users.Select(u => new UserDto.Index
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName
+            }));
         }
 
         public Task<UserDto.Detail> GetDetailAsync()
