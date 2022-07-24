@@ -38,5 +38,12 @@ namespace Faith.Shared.Users
         {
             return Task.FromResult(_users.Single(u => u.Id == userId));
         }
+
+        public Task DeleteAsync(int userId)
+        {
+            var u = _users.SingleOrDefault(u => u.Id == userId);
+            _users.Remove(u);
+            return Task.CompletedTask;
+        }
     }
 }

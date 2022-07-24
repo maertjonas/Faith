@@ -9,5 +9,7 @@ namespace Faith.Shared.Users
     public interface IUserService
     {
         Task<IEnumerable<UserDto.Index>> GetIndexAsync();
+        Task<UserDto.Detail> GetDetailAsync(int userId);
+        Task DeleteAsync(int userId);
     }
 }
