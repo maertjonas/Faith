@@ -4,6 +4,7 @@ using Faith.Client;
 using Faith.Shared.Posts;
 using Microsoft.AspNetCore.Components.Authorization;
 using Faith.Client.Shared;
+using Faith.Shared.Users;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -15,4 +16,5 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, FakeAuthenticationProvider>();
 builder.Services.AddScoped<IPostService, FakePostService>();
+builder.Services.AddScoped<IUserService, FakeUserService>();
 await builder.Build().RunAsync();
