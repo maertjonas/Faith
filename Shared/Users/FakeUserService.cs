@@ -28,5 +28,10 @@ namespace Faith.Shared.Users
         {
             return Task.FromResult(_users.AsEnumerable());
         }
+
+        public Task<UserDto.Detail> GetDetailAsync()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
