@@ -13,15 +13,20 @@ namespace Faith.Shared.Users
 
         static FakeUserService()
         {
+            Random rand = new Random();
+            DateTime start = new DateTime(1995, 1, 1);
+            int range = (DateTime.Today - start).Days;
+
             var userIds = 0;
 
             var userFaker = new Faker<UserDto.Detail>("nl")
             .UseSeed(1337)
             .RuleFor(x => x.Id, _ => ++userIds)
             .RuleFor(x => x.FirstName, f => f.Person.FirstName)
-            .RuleFor(x => x.LastName, f => f.Person.LastName);
+            .RuleFor(x => x.LastName, f => f.Person.LastName)
+            .RuleFor(x => x.DateOfBirth, _ => start.AddDays(rand.Next(range)));
 
-            _users = userFaker.Generate(8);
+            _users = userFaker.Generate(10);
         }
 
         public Task<IEnumerable<UserDto.Index>> GetIndexAsync()
