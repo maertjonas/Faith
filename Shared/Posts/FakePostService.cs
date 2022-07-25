@@ -15,12 +15,14 @@ namespace Faith.Shared.Posts
             Random rand = new Random();
             DateTime start = new DateTime(1995, 1, 1);
             int range = (DateTime.Today - start).Days;
-            
+            var lorem = new Bogus.DataSets.Lorem(locale: "nl");
+            int rangeLorem = rand.Next(2, 6);
+
             var postIds = 0;
             var postFaker = new Faker<PostDto.Detail>("nl")
             .UseSeed(1337) // Always return the same posts
             .RuleFor(x => x.Id, _ => ++postIds)
-            .RuleFor(x => x.Text, f => f.Commerce.ProductName())
+            .RuleFor(x => x.Text, _ => lorem.Paragraph(rangeLorem))
             .RuleFor(x => x.Archive, _ => rand.NextDouble() >= 0.5)
             .RuleFor(x => x.Pinned, _ => rand.NextDouble() >= 0.5)
             .RuleFor(x => x.Date, _ => start.AddDays(rand.Next(range)));
