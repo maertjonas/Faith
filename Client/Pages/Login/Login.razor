@@ -1,7 +1,8 @@
-﻿@page "/login"
+﻿@page "/"
+@page "/login"
+@inject NavigationManager NavManager
 
-<h3>Test</h3>
-
+    
 <form class="form">
     <h1 class="form-title">Faith</h1>
     <div class="form-group group--email">
@@ -10,5 +11,12 @@
     <div class="form-group group--password">
         <input type="password" placeholder="password" class="form-input" />
     </div>
-    <button type="submit" class="form-submit">Login</button>
-</form>
+    <button type="submit" class="form-submit" @onclick=@TempNavigateMain>Login</button>
+</form> 
+
+@code {
+    void TempNavigateMain()
+        {
+            NavManager.NavigateTo("post");
+        }
+}
