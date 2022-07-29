@@ -20,10 +20,11 @@ namespace Faith.Server.Services
 
         public static User Get(int id) => Users.FirstOrDefault(u => u.Id == id);
 
-        public static void Add(User user)
+        public static User Add(User user)
         {
             user.Id = nextId++;
             Users.Add(user);
+            return user;
         }
 
         public static void Delete(int id)

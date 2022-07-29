@@ -1,5 +1,6 @@
 ﻿using Domain.Users;
 using Faith.Server.Services;
+using Faith.Shared.Users;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -49,10 +50,10 @@ namespace Faith.Server.Controllers
         [SwaggerOperation(Summary = "registers a user to the database", Description = "Registers a user to the database")]
         [SwaggerResponse(201, "Created")]
         [SwaggerResponse(400, "Bad Request")]
-        public IActionResult Create(User user)
+        public IActionResult Create(UserDto.Create dto)
         {
-            UserService.Add(user);
-            return CreatedAtAction(nameof(Create), new { id = user.Id }, user);
+            var user = UserService.Add(new User { FirstName = dto.FirstName, LastName = dto.LastName });
+            return CreatedAtAction(nameof(Create), new { id = user.Id });
         }
 
         /**
