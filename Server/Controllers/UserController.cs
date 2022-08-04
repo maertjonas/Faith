@@ -17,22 +17,20 @@ namespace Faith.Server.Controllers
             _userService = userService;
         }
 
-        /**
-        * * GET
-        * * /api/users
-        * ? gets all users
-        */
+        /// <summary>
+        /// Gets all users
+        /// </summary>
+        /// <returns>List of users</returns>
         [HttpGet]
         [SwaggerOperation(Summary = "gets all users", Description = "Returns all registered users")]
         [SwaggerResponse(200, "Ok")]
         public Task<IEnumerable<UserDto.Index>> GetIndexAsync() => _userService.GetIndexAsync();
 
-        /**
-        * * GET
-        * * /api/users/{id}
-        * ? gets a user by id
-        * @param id
-        */
+        /// <summary>
+        /// Gets a user by given id
+        /// </summary>
+        /// <param name="id">User id</param>
+        /// <returns>User</returns>
         [HttpGet("{id}")]
         [SwaggerOperation(Summary = "get a user by id", Description = "Returns a user by given parameter Id")]
         [SwaggerResponse(200, "Ok")]
@@ -40,12 +38,11 @@ namespace Faith.Server.Controllers
         public Task<UserDto.Detail> Get(int id) => _userService.GetDetailAsync(id);
         //Detail or Index?
 
-        /**
-        * * POST
-        * * /api/users
-        * ? creates a new user
-        * @param user
-        */
+        /// <summary>
+        /// Registers a user to the database
+        /// </summary>
+        /// <param name="model">Create user DTO</param>
+        /// <returns>Created response</returns>
         [HttpPost]
         [SwaggerOperation(Summary = "registers a user to the database", Description = "Registers a user to the database")]
         [SwaggerResponse(201, "Created")]
@@ -56,12 +53,12 @@ namespace Faith.Server.Controllers
             return CreatedAtAction("GetIndexAsync", id);
         }
 
-        /**
-        * * PUT
-        * * /api/users/{id}
-        * ? updates a user by id
-        * @param id
-        */
+        /// <summary>
+        /// Updates a user by id
+        /// </summary>
+        /// <param name="id">User id to update</param>
+        /// <param name="model">Data to update the user with</param>
+        /// <returns>No Content</returns>
         [HttpPut("{id}")]
         [SwaggerOperation(Summary = "Update user with given id", Description = "Updates user")]
         [SwaggerResponse(201, "No Content")]
@@ -79,12 +76,11 @@ namespace Faith.Server.Controllers
             return NoContent();
         }
 
-        /**
-        * * DELETE
-        * * /api/users/{id}
-        * ? deletes a user by id
-        * @param id
-        */
+        /// <summary>
+        /// Deletes a user by id
+        /// </summary>
+        /// <param name="id">User id to delete</param>
+        /// <returns>No Content</returns>
         [HttpDelete("{id}")]
         [SwaggerOperation(Summary = "deletes user with given id", Description = "Deletes user")]
         [SwaggerResponse(201, "No Content")]
