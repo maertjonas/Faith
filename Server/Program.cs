@@ -2,6 +2,7 @@ using Faith.Shared.Posts;
 using Faith.Shared.Users;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.OpenApi.Models;
+using Services.Data;
 using Services.Posts;
 using Services.Users;
 
@@ -15,6 +16,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPostService, FakePostService>();
 
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddSqlite<ApplicationContext>("Data Source=ContosoPizza.db");
 
 builder.Services.AddMvc(options =>
 {

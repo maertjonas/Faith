@@ -9,6 +9,8 @@
   <ItemGroup>
     <PackageReference Include="Bogus" Version="34.0.2" />
     <PackageReference Include="FluentValidation" Version="11.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="6.0.7" />
+    <PackageReference Include="SQLite" Version="3.13.0" />
   </ItemGroup>
 
   <ItemGroup>
