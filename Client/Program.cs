@@ -15,6 +15,4 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, FakeAuthenticationProvider>();
-builder.Services.AddScoped<IPostService, FakePostService>();
-//builder.Services.AddScoped<IUserService, FakeUserService>();
 await builder.Build().RunAsync();

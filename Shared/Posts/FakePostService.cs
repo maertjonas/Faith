@@ -1,4 +1,4 @@
-﻿using Bogus;
+﻿/*using Bogus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,3 +52,4 @@ namespace Faith.Shared.Posts
 
     }
 }
+*/
