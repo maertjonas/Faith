@@ -13,6 +13,11 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddEndpointsApiExplorer();
 
+builder.Services.AddMvc(options =>
+{
+    options.SuppressAsyncSuffixInActionNames = false;
+});
+
 // Fluentvalidation middleware?
 
 builder.Services.AddSwaggerGen(options =>

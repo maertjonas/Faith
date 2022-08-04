@@ -53,7 +53,7 @@ namespace Faith.Server.Controllers
         public async Task<ActionResult<int>> CreateAsync(UserDto.Create model)
         {
             var id = await _userService.CreateAsync(model);
-            return CreatedAtAction("GetDetail", id);
+            return CreatedAtAction("GetIndexAsync", id);
         }
 
         /**
