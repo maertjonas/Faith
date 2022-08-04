@@ -10,8 +10,6 @@ namespace Faith.Server.Controllers
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
-        public UserController() { }
-
         private readonly IUserService _userService;
 
         public UserController(IUserService userService)
