@@ -35,5 +35,7 @@ namespace Faith.Shared.Users
                 }
             }
         }
+
+        public class Update : Create { }
     }
 }

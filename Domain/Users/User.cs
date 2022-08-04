@@ -47,5 +47,22 @@ namespace Domain.Users
             get { return gender; }
             set { gender = Guard.Against.EnumOutOfRange(value, nameof(gender)); }
         }
+
+        public User()
+        {
+
+        }
+
+        public User(string firstName, string lastName)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+        } 
+        public User(int id, string firstName, string lastName)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+        }
     }
 }

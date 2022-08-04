@@ -1,4 +1,4 @@
-﻿using Bogus;
+﻿/*using Bogus;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ namespace Faith.Shared.Users
     public class FakeUserService : IUserService
     {
         private static readonly List<UserDto.Detail> _users = new();
-
+        
         static FakeUserService()
         {
             Random rand = new Random();
@@ -51,4 +51,4 @@ namespace Faith.Shared.Users
             return Task.CompletedTask;
         }
     }
-}
+}*/

@@ -10,6 +10,8 @@ namespace Faith.Shared.Users
     {
         Task<IEnumerable<UserDto.Index>> GetIndexAsync();
         Task<UserDto.Detail> GetDetailAsync(int userId);
+        Task<int> CreateAsync(UserDto.Create model);
+        Task UpdateAsync(UserDto.Update model);
         Task DeleteAsync(int userId);
     }
 }

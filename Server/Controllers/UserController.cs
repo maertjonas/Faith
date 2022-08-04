@@ -12,6 +12,13 @@ namespace Faith.Server.Controllers
     {
         public UserController() { }
 
+        private readonly IUserService _userService;
+
+        public UserController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         /**
         * * GET
         * * /api/users
@@ -20,7 +27,7 @@ namespace Faith.Server.Controllers
         [HttpGet]
         [SwaggerOperation(Summary = "gets all users", Description = "Returns all registered users")]
         [SwaggerResponse(200, "Ok")]
-        public ActionResult<List<User>> GetAll() => UserService.GetAll();
+        public Task<IEnumerable<UserDto.Index>> GetIndexAsync() => _userService.GetIndexAsync();
 
         /**
         * * GET
@@ -32,13 +39,8 @@ namespace Faith.Server.Controllers
         [SwaggerOperation(Summary = "get a user by id", Description = "Returns a user by given parameter Id")]
         [SwaggerResponse(200, "Ok")]
         [SwaggerResponse(404, "User not found")]
-        public ActionResult<User> Get(int id)
-        {
-            var user = UserService.Get(id);
-            if (user is null)
-                return NotFound();
-            return user;
-        }
+        public Task<UserDto.Detail> Get(int id) => _userService.GetDetailAsync(id);
+        //Detail or Index?
 
         /**
         * * POST
@@ -50,10 +52,10 @@ namespace Faith.Server.Controllers
         [SwaggerOperation(Summary = "registers a user to the database", Description = "Registers a user to the database")]
         [SwaggerResponse(201, "Created")]
         [SwaggerResponse(400, "Bad Request")]
-        public IActionResult Create(UserDto.Create dto)
+        public async Task<ActionResult<int>> CreateAsync(UserDto.Create model)
         {
-            var user = UserService.Add(new User { FirstName = dto.FirstName, LastName = dto.LastName });
-            return CreatedAtAction(nameof(Create), new { id = user.Id });
+            var id = await _userService.CreateAsync(model);
+            return CreatedAtAction("GetDetail", id);
         }
 
         /**
@@ -67,17 +69,14 @@ namespace Faith.Server.Controllers
         [SwaggerResponse(201, "No Content")]
         [SwaggerResponse(400, "Bad Request")]
         [SwaggerResponse(404, "Not Found")]
-        public IActionResult Update(int id, User user)
+        public async Task<IActionResult> UpdateAsync(int id, UserDto.Update model)
         {
-            if (id != user.Id)
-                return BadRequest();
-
-            User existingUser = UserService.Get(id);
+            var existingUser = await _userService.GetDetailAsync(id);
 
             if (existingUser is null)
                 return NotFound();
 
-            UserService.Update(user);
+            await _userService.UpdateAsync(model);
 
             return NoContent();
         }
@@ -92,14 +91,14 @@ namespace Faith.Server.Controllers
         [SwaggerOperation(Summary = "deletes user with given id", Description = "Deletes user")]
         [SwaggerResponse(201, "No Content")]
         [SwaggerResponse(404, "Not Found")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            User user = UserService.Get(id);
+            var user = await _userService.GetDetailAsync(id);
 
             if (user is null)
                 return NotFound();
 
-            UserService.Delete(id);
+            await _userService.DeleteAsync(id);
 
             return NoContent();
         }
