@@ -18,9 +18,8 @@ namespace Domain.Posts
         private string text;
         public string Text
         {
-            get; set;
-            //get { return text; }
-            //set { text = Guard.Against.NullOrWhiteSpace(value, nameof(text)); }
+            get { return text; }
+            set { text = Guard.Against.NullOrWhiteSpace(value, nameof(text)); }
         }
 
         private DateTime date;
