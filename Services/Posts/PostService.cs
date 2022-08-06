@@ -59,9 +59,12 @@ namespace Services.Posts
         public async Task<bool> DeleteAsync(int id)
         {
             Post post = _context.posts.Where(p => p.Id == id).SingleOrDefault();
-            _context.posts.Remove(post);
-
-            await _context.SaveChangesAsync();
+            if(post is not null)
+            {
+                _context.posts.Remove(post);
+                await _context.SaveChangesAsync();
+            }
+            
             return true;
         }
 
