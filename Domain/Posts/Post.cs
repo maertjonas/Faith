@@ -44,6 +44,8 @@ namespace Domain.Posts
             }
         }
 
+        public Post() { }
+
         public Post(string text, DateTime date)
         {
             this.Text = text;
