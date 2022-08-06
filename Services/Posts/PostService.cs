@@ -48,6 +48,14 @@ namespace Services.Posts
             return post;
         }
 
+        public async Task<int> AddPostAsync(PostDto.Create model)
+        {
+            var post = _context.posts.Add(new Post(model.Text, model.Date));
+
+            await _context.SaveChangesAsync();
+            return post.Entity.Id;
+        }
+
         public async Task<bool> DeleteAsync(int id)
         {
             Post post = _context.posts.Where(p => p.Id == id).SingleOrDefault();

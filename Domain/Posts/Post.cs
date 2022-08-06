@@ -43,5 +43,11 @@ namespace Domain.Posts
                 comments = Guard.Against.NullOrEmpty(value, nameof(comments));
             }
         }
+
+        public Post(string text, DateTime date)
+        {
+            this.Text = text;
+            this.Date = date;
+        }
     }
 }
