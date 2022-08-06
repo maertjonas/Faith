@@ -44,5 +44,9 @@ namespace Services.Posts
             throw new NotImplementedException();
         }
 
+        public Task<int> AddPostAsync(PostDto.Create model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

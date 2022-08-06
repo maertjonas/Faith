@@ -19,6 +19,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSqlite<ApplicationContext>("Data Source=ContosoPizza.db");
 
+
+
 builder.Services.AddMvc(options =>
 {
     options.SuppressAsyncSuffixInActionNames = false;
@@ -51,6 +53,8 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 app.UseSwaggerUI();
 
+app.CreateDbIfNotExists();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -73,6 +77,8 @@ else
     app.UseHsts();
 }
 
+
+app.CreateDbIfNotExists();
 
 app.UseHttpsRedirection();
 

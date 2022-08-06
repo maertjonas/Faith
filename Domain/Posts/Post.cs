@@ -46,7 +46,7 @@ namespace Domain.Posts
 
         public Post() { }
 
-        public Post(string text, DateTime date)
+        public Post(string text, DateTime date) //: base()
         {
             this.Text = text;
             this.Date = date;
