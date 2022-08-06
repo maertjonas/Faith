@@ -10,6 +10,6 @@ namespace Faith.Shared.Posts
     {
         Task<IEnumerable<PostDto.Index>> GetIndexAsync();
         Task<PostDto.Detail> GetDetailAsync(int postId);
-        Task DeleteAsync(int postId);
+        Task<bool> DeleteAsync(int postId);
     }
 }

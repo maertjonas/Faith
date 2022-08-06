@@ -39,7 +39,7 @@ namespace Services.Posts
             return _posts.SingleOrDefault(p => p.Id == postId);
         }
 
-        public Task DeleteAsync(int postId)
+        public Task<bool> DeleteAsync(int postId)
         {
             throw new NotImplementedException();
         }
