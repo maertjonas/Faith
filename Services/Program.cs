@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSqlite<ApplicationContext>("Data Source=Faith.db");
 
 var app = builder.Build();
+
 app.CreateDbIfNotExists();
 
 // Configure the HTTP request pipeline.
