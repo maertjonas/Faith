@@ -1,6 +1,7 @@
 using Faith.Shared.Posts;
 using Faith.Shared.Users;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Services.Data;
 using Services.Posts;
@@ -16,6 +17,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 /*builder.Services.AddScoped<IPostService, FakePostService>();
 */
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddDbContext<ApplicationContext>(
+    o => o.UseNpgsql(builder.Configuration.GetConnectionString("FaithDb")));
 
 
 builder.Services.AddMvc(options =>
