@@ -10,7 +10,9 @@
                     var services = scope.ServiceProvider;
                     var context = services.GetRequiredService<ApplicationContext>();
                     context.Database.EnsureCreated();
-                    //DbInitializer.SeedData();
+                    Console.WriteLine("CALLED");
+                    var dbInit = new DbInitializer(context);
+                    dbInit.SeedData();
                 }
             }
         }

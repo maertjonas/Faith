@@ -16,8 +16,10 @@ namespace Services.Data
         public void SeedData()
         {
             _context.Database.EnsureDeleted();
+            Console.WriteLine("Ensure deleted called");
             if (_context.Database.EnsureCreated())
             {
+                Console.WriteLine("Ensure created called");
                 Seeder();
             }
         }
@@ -32,15 +34,12 @@ namespace Services.Data
 
         public void Seeder()
         {
-            var post = _context.Posts.FirstOrDefault();
-            if (post != null) return;
+            Console.WriteLine("Seeder called");
 
-            Console.WriteLine("Ik kom na de return");
+            String now = DateTime.Now.ToString("yyyyMMddHHmmssffff");
 
-            DateTime now = DateTime.Now;
-
-            var comment1 = new Comment { Id = 1, Text = "Tekstje", Date = now };
-            var comment2 = new Comment { Id = 2,  Text = "Tekstje2", Date = now };
+            var comment1 = new Comment { Text = "Tekstje", Date = now };
+            var comment2 = new Comment { Text = "Tekstje2", Date = now };
 
             /*var posts = new Post[]
             {
@@ -62,21 +61,21 @@ namespace Services.Data
             };*/
             _context.Posts.Add(new Post
                 {
-                    Id = 10,
                     Text = "Post 1",
                     Date = now,
+                    Image = "",
                     Comments = new List<Comment> { comment1, comment2 }
                 });
 
             //context.Posts.AddRange(posts);
             _context.SaveChanges();
-
         }
 
-        /*public static void Initialize(ApplicationContext context)
+        public static void Initialize(ApplicationContext context)
         {
+            Console.WriteLine("Init called");
 
-            
+            /*
             if (context.Users.Any()
                 && context.Posts.Any()
                 && context.Comments.Any())
@@ -100,8 +99,8 @@ namespace Services.Data
             };
 
             context.Posts.AddRange(posts);
-            context.SaveChanges();
+            context.SaveChanges();*/
 
-        }*/
+        }
     }
 }

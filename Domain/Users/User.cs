@@ -31,8 +31,8 @@ namespace Domain.Users
             get { return password; }
             set { password = Guard.Against.NullOrWhiteSpace(value, nameof(password)); }
         }
-        private DateTime dateOfBirth;
-        public DateTime DateOfBirth { get; set; }
+        private String dateOfBirth;
+        public String DateOfBirth { get; set; }
 
         private RoleType roleType;
         public RoleType RoleType

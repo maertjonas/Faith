@@ -16,7 +16,7 @@ namespace Faith.Shared.Posts
         }
         public class Detail: Index
         {
-            public DateTime Date { get; set; }
+            public String Date { get; set; }
             public bool Archive { get; set; }
             public bool Pinned { get; set; }
         }
@@ -24,7 +24,7 @@ namespace Faith.Shared.Posts
         public class Create
         {
             public string Text { get; set; } = null;
-            public DateTime Date { get; set; } = DateTime.Now;
+            public String Date { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
 
             public class Validator : AbstractValidator<Create>
             {

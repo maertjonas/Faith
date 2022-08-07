@@ -27,7 +27,7 @@ namespace Services.Posts
                 Pinned = p.Pinned,
                 Archive = p.Archive,
                 Text = p.Text,
-                Date = DateTime.Now
+                Date = DateTime.Now.ToString("yyyyMMddHHmmssffff")
                 //Image + comments?
             }) ;
         }
@@ -42,7 +42,7 @@ namespace Services.Posts
                 Pinned= p.Pinned,
                 Archive = p.Archive,
                 Text = p.Text,
-                Date = DateTime.Now
+                Date = DateTime.Now.ToString("yyyyMMddHHmmssffff")
                 //Image + comments?
             }).SingleOrDefault();
             return post;

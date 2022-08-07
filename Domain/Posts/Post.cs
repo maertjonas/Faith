@@ -27,8 +27,8 @@ namespace Domain.Posts
         }
 
         [Required]
-        private DateTime date;
-        public DateTime Date { get; set; }
+        private string date;
+        public string Date { get; set; }
 
         private string image;
         public string Image { get; set; }
@@ -46,7 +46,7 @@ namespace Domain.Posts
 
         public Post() { }
 
-        public Post(string text, DateTime date)
+        public Post(string text, String date)
         {
             this.Text = text;
             this.Date = date;
