@@ -21,7 +21,7 @@ namespace Services.Posts
         public async Task<IEnumerable<PostDto.Index>> GetIndexAsync()
         {
             await Task.Delay(100);
-            return _context.posts.AsNoTracking().Select(p => new PostDto.Detail
+            return _context.Posts.AsNoTracking().Select(p => new PostDto.Detail
             {
                 Id = p.Id,
                 Pinned = p.Pinned,
@@ -36,7 +36,7 @@ namespace Services.Posts
         public async Task<PostDto.Detail> GetDetailAsync(int id)
         {
             await Task.Delay(100);
-            PostDto.Detail post = _context.posts.Where(p => p.Id == id).AsNoTracking().Select(p => new PostDto.Detail
+            PostDto.Detail post = _context.Posts.Where(p => p.Id == id).AsNoTracking().Select(p => new PostDto.Detail
             {
                 Id = p.Id,
                 Pinned= p.Pinned,
@@ -50,7 +50,7 @@ namespace Services.Posts
 
         public async Task<int> AddPostAsync(PostDto.Create model)
         {
-            var post = _context.posts.Add(new Post(model.Text, model.Date));
+            var post = _context.Posts.Add(new Post(model.Text, model.Date));
 
             await _context.SaveChangesAsync();
             return post.Entity.Id;
@@ -58,10 +58,10 @@ namespace Services.Posts
 
         public async Task<bool> DeleteAsync(int id)
         {
-            Post post = _context.posts.Where(p => p.Id == id).SingleOrDefault();
+            Post post = _context.Posts.Where(p => p.Id == id).SingleOrDefault();
             if(post is not null)
             {
-                _context.posts.Remove(post);
+                _context.Posts.Remove(post);
                 await _context.SaveChangesAsync();
             }
             

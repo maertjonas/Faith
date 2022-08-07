@@ -18,14 +18,19 @@ builder.Services.AddScoped<IUserService, UserService>();
 */
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddDbContext<ApplicationContext>(
-    o => o.UseNpgsql(builder.Configuration.GetConnectionString("FaithDb")));
-
 
 builder.Services.AddMvc(options =>
 {
     options.SuppressAsyncSuffixInActionNames = false;
 });
+
+
+//DbContext
+builder.Services.AddDbContext<ApplicationContext>(
+    o => o.UseNpgsql(builder.Configuration.GetConnectionString("FaithDb")));
+
+
+builder.Services.AddScoped<DbInitializer>();
 
 // Fluentvalidation middleware?
 
@@ -88,5 +93,6 @@ app.UseRouting();
 app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
+app.Seed();
 
 app.Run();
