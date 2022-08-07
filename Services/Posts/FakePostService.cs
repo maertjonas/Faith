@@ -1,4 +1,4 @@
-﻿using Faith.Shared.Posts;
+﻿/*using Faith.Shared.Posts;
 
 namespace Services.Posts
 {
@@ -46,3 +46,4 @@ namespace Services.Posts
 
     }
 }
+*/

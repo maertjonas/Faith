@@ -13,11 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IPostService, FakePostService>();
-
+/*builder.Services.AddScoped<IPostService, FakePostService>();
+*/
 builder.Services.AddEndpointsApiExplorer();
 
-builder.Services.AddSqlite<ApplicationContext>("Data Source=ContosoPizza.db");
 
 builder.Services.AddMvc(options =>
 {
