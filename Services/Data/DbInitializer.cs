@@ -22,7 +22,7 @@ namespace Services.Data
                 Seeder();
             }
         }
-        public void Seeder()
+        public async void Seeder()
         {
 
             Random rand = new Random();
@@ -51,7 +51,10 @@ namespace Services.Data
                     Image = "",
                     Archive = false,
                     Pinned = false,
-                    Comments = new List<Comment> { comment1, comment2 }
+                    Comments = new List<Comment> { 
+                        new Comment { Date = now, Text = "test" },
+                        new Comment { Date = now, Text = "test" }
+                    }
                 },
                 new Post
                 {
@@ -125,6 +128,7 @@ namespace Services.Data
 
             _context.Posts.AddRange(posts);
             _context.Users.AddRange(users);
+            
             _context.SaveChanges();
         }
     }

@@ -8,8 +8,8 @@ namespace Domain.Comments
     {
 
         [Required]
-        private String date;
-        public String Date { get; set; }
+        private string date;
+        public string Date { get; set; }
 
         [Required]
         [MaxLength(300)]

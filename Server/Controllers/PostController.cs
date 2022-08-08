@@ -20,6 +20,6 @@ namespace Faith.Server.Controllers
         [HttpGet]
         [SwaggerOperation(Summary = "Get all posts", Description = "Returns all posts")]
         [SwaggerResponse(200, "Ok")]
-        public Task<IEnumerable<PostDto.Detail>> GetPostAsync() => _postService.GetPostAsync();
+        public Task<List<PostDto.Detail>> GetPostAsync() => _postService.GetPostAsync();
     }
 }
