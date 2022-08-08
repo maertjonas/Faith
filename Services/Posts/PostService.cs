@@ -8,72 +8,47 @@ namespace Services.Posts
     public class PostService : IPostService
     {
 
-        private readonly ApplicationContext _context;
-           
         public PostService(ApplicationContext context)
         {
             _context = context;
         }
 
-        //Get all
-        //PostDto.Detail instead?
-        //.Include(p => p.Comments)
-        public async Task<IEnumerable<PostDto.Index>> GetIndexAsync()
+        private readonly ApplicationContext _context;
+        private readonly DbSet<Post> _posts;
+
+        private IQueryable<Post> GetPostById(int id) => _posts
+            .AsNoTracking()
+            .Where(p => p.Id == id);
+
+        public async Task<IEnumerable<PostDto.Detail>> GetPostAsync()
         {
             await Task.Delay(100);
             return _context.Posts.AsNoTracking().Select(p => new PostDto.Detail
             {
-                Id = p.Id,
-                Pinned = p.Pinned,
-                Archive = p.Archive,
+                Id= p.Id,
                 Text = p.Text,
-                Date = DateTime.Now.ToString("yyyyMMddHHmmssffff")
-                //Image + comments?
-            }) ;
+                Date = p.Date
+            });
         }
 
-        //Get one detail
-        public async Task<PostDto.Detail> GetDetailAsync(int id)
+        public Task<PostDto.Detail> GetDetailAsync(int id)
         {
-            await Task.Delay(100);
-            PostDto.Detail post = _context.Posts.Where(p => p.Id == id).AsNoTracking().Select(p => new PostDto.Detail
-            {
-                Id = p.Id,
-                Pinned= p.Pinned,
-                Archive = p.Archive,
-                Text = p.Text,
-                Date = DateTime.Now.ToString("yyyyMMddHHmmssffff")
-                //Image + comments?
-            }).SingleOrDefault();
-            return post;
+            throw new NotImplementedException();
         }
 
-        public async Task<int> AddPostAsync(PostDto.Create model)
+        public Task<int> AddPostAsync(PostDto.Create model)
         {
-            var post = _context.Posts.Add(new Post(model.Text, model.Date));
-
-            await _context.SaveChangesAsync();
-            return post.Entity.Id;
+            throw new NotImplementedException();
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public Task<bool> RemovePostAysync(int id)
         {
-            Post post = _context.Posts.Where(p => p.Id == id).SingleOrDefault();
-            if(post is not null)
-            {
-                _context.Posts.Remove(post);
-                await _context.SaveChangesAsync();
-            }
-            
-            return true;
+            throw new NotImplementedException();
         }
 
-        //UpdatePost
-
-
-
-
-
-
+        public Task UpdatePostAsync(int id, PostDto.Create model)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -2,7 +2,7 @@
 @using Faith.Shared.Posts
 @inject IPostService PostService
 @inject NavigationManager NavigationManager
-    
+@*    
 @if (post == null)
 {
     <p><em>Loading...</em></p>
@@ -32,4 +32,4 @@ else
         await PostService.DeleteAsync(post.Id);
         NavigationManager.NavigateTo("/post");
     }
-}
+}*@

@@ -17,8 +17,7 @@ namespace Domain.Posts
         private bool archive;
         public bool Archive { get; set; }
 
-        [Required]
-        [MaxLength(300)]
+        
         private string text;
         public string Text
         {
@@ -26,7 +25,6 @@ namespace Domain.Posts
             set { text = Guard.Against.NullOrWhiteSpace(value, nameof(text)); }
         }
 
-        [Required]
         private string date;
         public string Date { get; set; }
 
@@ -50,6 +48,13 @@ namespace Domain.Posts
         {
             this.Text = text;
             this.Date = date;
+        }
+
+        public Post(string text, string date, bool archive, bool pinned, string image) : this(text, date)
+        {
+            this.Archive = archive;
+            this.Pinned = pinned;
+            this.Image = image;
         }
     }
 }

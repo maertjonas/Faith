@@ -31,6 +31,7 @@ builder.Services.AddDbContext<ApplicationContext>(
 
 
 builder.Services.AddScoped<DbInitializer>();
+builder.Services.AddScoped<IPostService, PostService>();
 
 // Fluentvalidation middleware?
 
@@ -53,6 +54,11 @@ builder.Services.AddSwaggerGen(options =>
             Url = new Uri("https://example.com/license")
         }
     });
+});
+
+builder.Services.ConfigureSwaggerGen(options =>
+{
+    options.CustomSchemaIds(x => $"{x.DeclaringType.Name}.{x.Name}");
 });
 
 
