@@ -1,5 +1,4 @@
 ﻿using Domain.Users;
-using Faith.Server.Services;
 using Faith.Shared.Users;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -19,7 +18,7 @@ namespace Faith.Server.Controllers
 
         /// <summary>
         /// Gets all users
-        /// </summary>
+        /// </summary> 
         /// <returns>List of users</returns>
         [HttpGet]
         [SwaggerOperation(Summary = "gets all users", Description = "Returns all registered users")]

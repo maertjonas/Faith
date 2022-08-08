@@ -16,24 +16,32 @@ namespace Faith.Shared.Posts
         }
         public class Detail: Index
         {
-            public String Date { get; set; }
+            public string Date { get; set; }
             public bool Archive { get; set; }
             public bool Pinned { get; set; }
+            public string Image { get; set; }
         }
 
-        public class Create
+        public class Mutate
         {
             public string Text { get; set; } = null;
-            public String Date { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            public string Date { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            public bool Archive { get; set; }
+            public bool Pinned { get; set; }
+            public string Image { get; set; }
 
-            public class Validator : AbstractValidator<Create>
+            public class Validator : AbstractValidator<Mutate>
             {
                 public Validator()
                 {
-                    RuleFor(x => x.Text).NotEmpty().Length(1, 300).WithName("Text");
+                    RuleFor(x => x.Text).NotNull().NotEmpty().Length(1, 300).WithName("Text");
                     RuleFor(x => x.Date).NotNull().NotEmpty().WithName("Date");
+                    RuleFor(x => x.Archive).NotNull().NotEmpty().WithName("Archive");
+                    RuleFor(x => x.Pinned).NotNull().NotEmpty().WithName("Pinned");
+                    RuleFor(x => x.Image).NotNull().NotEmpty().WithName("Image");
                 }
             }
+
         }
     }
 }
