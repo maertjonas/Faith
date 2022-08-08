@@ -2,6 +2,7 @@
 using Domain.Common;
 using Faith.Shared.RoleTypes;
 using Faith.Shared.Gender;
+using System.Text.Json.Serialization;
 
 namespace Domain.Users
 {
@@ -46,6 +47,17 @@ namespace Domain.Users
         {
             get { return gender; }
             set { gender = Guard.Against.EnumOutOfRange(value, nameof(gender)); }
+        }
+
+        [JsonIgnore]
+        private IEnumerable<User> juniors;
+        public IEnumerable<User> Juniors
+        {
+            get { return juniors; }
+            set
+            {
+                juniors = Guard.Against.NullOrEmpty(value, nameof(juniors));
+            }
         }
 
         public User()

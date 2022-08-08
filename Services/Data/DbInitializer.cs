@@ -80,38 +80,40 @@ namespace Services.Data
                     Password = "Testje123",
                     DateOfBirth = DateTime.Now.AddYears(-60).ToString("yyyyMMddHHmmssffff"),
                     RoleType = Faith.Shared.RoleTypes.RoleType.Mentor,
-                    Gender = Faith.Shared.Gender.Gender.Male
-                },
-                new User
-                {
-                    FirstName = "Nathan",
-                    LastName = "Vanloppem",
-                    Email = "Nathan.Vanloppem@gmail.com",
-                    Password = "Testje123",
-                    DateOfBirth = DateTime.Now.AddYears(-15).ToString("yyyyMMddHHmmssffff"),
-                    RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
-                    Gender = Faith.Shared.Gender.Gender.Male
-                },
-                new User
-                {
-                    FirstName = "Cynthia",
-                    LastName = "Deboosere",
-                    Email = "Cynthia.Deboosere@gmail.com",
-                    Password = "Testje123",
-                    DateOfBirth = DateTime.Now.AddYears(-13).ToString("yyyyMMddHHmmssffff"),
-                    RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
-                    Gender = Faith.Shared.Gender.Gender.Female
-                },
-                new User
-                {
-                    FirstName = "Tim",
-                    LastName = "Dubois",
-                    Email = "Tim.Dubois@gmail.com",
-                    Password = "Testje123",
-                    DateOfBirth = DateTime.Now.AddYears(-14).ToString("yyyyMMddHHmmssffff"),
-                    RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
-                    Gender = Faith.Shared.Gender.Gender.Other
-                },
+                    Gender = Faith.Shared.Gender.Gender.Male,
+                    Juniors = new List<User>{
+                            new User
+                            {
+                                FirstName = "Nathan",
+                                LastName = "Vanloppem",
+                                Email = "Nathan.Vanloppem@gmail.com",
+                                Password = "Testje123",
+                                DateOfBirth = DateTime.Now.AddYears(-15).ToString("yyyyMMddHHmmssffff"),
+                                RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
+                                Gender = Faith.Shared.Gender.Gender.Male
+                            },
+                            new User
+                            {
+                                FirstName = "Cynthia",
+                                LastName = "Deboosere",
+                                Email = "Cynthia.Deboosere@gmail.com",
+                                Password = "Testje123",
+                                DateOfBirth = DateTime.Now.AddYears(-13).ToString("yyyyMMddHHmmssffff"),
+                                RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
+                                Gender = Faith.Shared.Gender.Gender.Female
+                            },
+                            new User
+                            {
+                                FirstName = "Tim",
+                                LastName = "Dubois",
+                                Email = "Tim.Dubois@gmail.com",
+                                Password = "Testje123",
+                                DateOfBirth = DateTime.Now.AddYears(-14).ToString("yyyyMMddHHmmssffff"),
+                                RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
+                                Gender = Faith.Shared.Gender.Gender.Other
+                        }
+                    }
+                }
             };
 
 
