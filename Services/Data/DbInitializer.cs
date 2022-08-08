@@ -49,6 +49,8 @@ namespace Services.Data
                     Text = lorem.Paragraph(5),
                     Date = now,
                     Image = "",
+                    Archive = false,
+                    Pinned = false,
                     Comments = new List<Comment> { comment1, comment2 }
                 },
                 new Post
@@ -56,6 +58,8 @@ namespace Services.Data
                     Text = lorem.Paragraph(3),
                     Date = now,
                     Image = "",
+                    Archive = false,
+                    Pinned = true,
                     Comments = new List<Comment> { comment3, comment4, comment5 }
                 },
                 new Post
@@ -63,6 +67,8 @@ namespace Services.Data
                     Text = lorem.Paragraph(4),
                     Date = now,
                     Image = "",
+                    Archive = false,
+                    Pinned = true,
                     Comments = new List<Comment> { comment6, comment7 }
                 },
 
