@@ -1,27 +1,23 @@
 ﻿using Domain.Users;
 using Faith.Shared.Users;
+using Microsoft.EntityFrameworkCore;
+using Services.Data;
 
 namespace Services.Users
 {
     public class UserService : IUserService
     {
-        private static readonly List<UserDto.Index> users = new();
+        private readonly ApplicationContext _context;
 
-        static UserService()
+        public UserService(ApplicationContext context)
         {
-            var fakeUsers = new UserFaker().Generate(10).Select(x => new UserDto.Index
-            {
-                Id = x.Id,
-                FirstName = x.FirstName,
-                LastName = x.LastName
-            });
-            users.AddRange(fakeUsers);
+            _context = context;
         }
 
         public async Task<IEnumerable<UserDto.Index>> GetIndexAsync()
         {
             await Task.Delay(100);
-            return users.Select(u => new UserDto.Index
+            return _context.Users.AsNoTracking().Select(u => new UserDto.Index
             {
                 Id = u.Id,
                 FirstName = u.FirstName,
@@ -31,36 +27,22 @@ namespace Services.Users
 
         public async Task<UserDto.Index> GetDetailAsync(int userId)
         {
-            await Task.Delay(100);
-            return users.SingleOrDefault(u => u.Id == userId);
+            throw new NotImplementedException();
         }
 
         public async Task DeleteAsync(int userId)
         {
-            await Task.Delay(100);
-            var user = users.SingleOrDefault(u => u.Id == userId);
-            users.Remove(user);
+            throw new NotImplementedException();
         }
 
         public async Task<int> CreateAsync(UserDto.Create model)
         {
-            await Task.Delay(100);
-            var user = new User(model.FirstName, model.LastName);
-
-            var mappedUser = new UserDto.Index
-            {
-                Id = users.Max(u => u.Id) + 1,
-                FirstName = user.FirstName,
-                LastName = user.LastName
-            };
-
-            users.Add(mappedUser);
-            return mappedUser.Id;
+            throw new NotImplementedException();
         }
 
         public Task UpdateAsync(UserDto.Update model)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         Task<UserDto.Detail> IUserService.GetDetailAsync(int userId)
