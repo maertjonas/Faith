@@ -32,13 +32,13 @@ namespace Domain.Posts
         public string Image { get; set; }
 
         [JsonIgnore]
-        private IEnumerable<Comment> comments;
-        public IEnumerable<Comment> Comments
+        private List<Comment> comments;
+        public List<Comment> Comments
         {
             get { return comments; }
             set
             {
-                comments = Guard.Against.NullOrEmpty(value, nameof(comments));
+                comments = (List<Comment>)Guard.Against.NullOrEmpty(value, nameof(comments));
             }
         }
 

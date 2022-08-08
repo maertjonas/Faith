@@ -58,7 +58,7 @@ namespace Services.Posts
             throw new NotImplementedException();
         }
 
-        private static List<CommentDto.Index> CommentsToCommentDtoConverter(IEnumerable<Comment> commentsList)
+        private static List<CommentDto.Index> CommentsToCommentDtoConverter(List<Comment> commentsList)
         {
 
             Console.WriteLine("CALLED");
@@ -66,11 +66,10 @@ namespace Services.Posts
             CommentDto.Index cDto;
             foreach(Comment c in commentsList)
             {
-                Console.WriteLine(c.Text.ToString());
                 cDto = new CommentDto.Index
                 {
                     Id = c.Id,
-                    Text = c.Text.ToString(),
+                    Text = c.Text,
                     Date = c.Date
                 };
                 commentDtoList.Add(cDto);
