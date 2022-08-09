@@ -2,7 +2,7 @@
 @using Faith.Shared.Users
 @inject IUserService FakeUserService
 
-
+@*
 <h1>Users</h1>
 @if (users == null)
 {
@@ -36,4 +36,4 @@ else
     {
         users = await FakeUserService.GetIndexAsync();
     }
-}
+}*@

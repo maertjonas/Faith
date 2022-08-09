@@ -14,8 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IUserService, UserService>();
-/*builder.Services.AddScoped<IPostService, FakePostService>();
-*/
+builder.Services.AddScoped<IPostService, PostService>();
+
 builder.Services.AddEndpointsApiExplorer();
 
 
@@ -54,12 +54,14 @@ builder.Services.AddSwaggerGen(options =>
             Url = new Uri("https://example.com/license")
         }
     });
+    options.CustomSchemaIds(type => type.ToString());
 });
 
-builder.Services.ConfigureSwaggerGen(options =>
+/*builder.Services.ConfigureSwaggerGen(options =>
 {
     options.CustomSchemaIds(x => $"{x.DeclaringType.Name}.{x.Name}");
-});
+    
+});*/
 
 
 var app = builder.Build();

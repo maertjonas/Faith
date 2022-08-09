@@ -1,5 +1,4 @@
 ﻿using Faith.Shared.RoleTypes;
-using Faith.Shared.Genders;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -16,6 +15,12 @@ namespace Faith.Shared.Users
             public int Id { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
+            public string DateOfBirth { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            public RoleType RoleType { get; set; }
+            //Gender
+            public List<UserDto.Index> Juniors { get; set; }
         }
 
         public class Detail : Index

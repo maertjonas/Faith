@@ -2,7 +2,7 @@
 @using Faith.Shared.Users
 @inject IUserService FakeUserService
 
-@if (user == null)
+@*@if (user == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -21,4 +21,4 @@ else
     {
         user = await FakeUserService.GetDetailAsync(Id);
     }    
-} 
+} *@

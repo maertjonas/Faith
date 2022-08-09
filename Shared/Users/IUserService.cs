@@ -8,11 +8,12 @@ namespace Faith.Shared.Users
 {
     public interface IUserService
     {
+        //Task<IEnumerable<UserDto.Index>> GetAuth0Users();
         Task<List<UserDto.Index>> GetIndexAsync();
-        Task<UserDto.Index> GetIndexAsync(int userId);
+        Task<UserDto.Index> GetDetailAsync(int userId);
         //Task<UserDto.Index> GetDetailAsyncByAuth0Id(string auth0Id);
         Task<int> CreateAsync(UserDto.Create model);
         Task UpdateAsync(UserDto.Update model);
-        Task<bool> DeleteAsync(int userId);
+        Task<bool> DeleteAsync(string auth0Id);
     }
 }

@@ -50,13 +50,13 @@ namespace Domain.Users
         }
 
         [JsonIgnore]
-        private IEnumerable<User> juniors;
-        public IEnumerable<User> Juniors
+        private List<User> juniors;
+        public List<User> Juniors
         {
             get { return juniors; }
             set
             {
-                juniors = Guard.Against.NullOrEmpty(value, nameof(juniors));
+                juniors = (List<User>)Guard.Against.NullOrEmpty(value, nameof(juniors));
             }
         }
 
