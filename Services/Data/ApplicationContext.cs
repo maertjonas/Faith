@@ -23,6 +23,13 @@ namespace Services.Data
                     .WithOne()
                     .OnDelete(DeleteBehavior.Cascade);
             base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.Entity<User>()
+                    .HasMany( s => s.Juniors)
+                    .WithOne()
+                    //Change cascade
+                    .OnDelete(DeleteBehavior.Cascade);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

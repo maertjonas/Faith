@@ -38,14 +38,21 @@ namespace Services.Users
             throw new NotImplementedException();
         }
 
-        public Task<int> CreateAsync(UserDto.Create model)
+        public async Task<int> CreateAsync(UserDto.Create model)
         {
-            throw new NotImplementedException();
+            var u = new User(model.FirstName, model.LastName, model.Email, model.Password, model.DateOfBirth, model.RoleType) { };
+            var user = _context.Users.Add(u);
+            await _context.SaveChangesAsync();
+            return user.Entity.Id;
         }
 
-        public Task<bool> DeleteAsync(string auth0Id)
+        public async Task<bool> DeleteAsync(int userId)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.Where(p => p.Id == userId).SingleOrDefault();
+            _context.Users.Remove(user);
+
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public Task UpdateAsync(UserDto.Update model)

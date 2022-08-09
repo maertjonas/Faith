@@ -51,6 +51,8 @@ namespace Domain.Users
 
         [JsonIgnore]
         private List<User> juniors;
+        private RoleType roleType1;
+
         public List<User> Juniors
         {
             get { return juniors; }
@@ -75,6 +77,14 @@ namespace Domain.Users
             Id = id;
             FirstName = firstName;
             LastName = lastName;
+        }
+
+        public User(string firstName, string lastName, string email, string password, string dateOfBirth, RoleType roleType) : this(firstName, lastName)
+        {
+            Email = email;
+            Password = password;
+            DateOfBirth = dateOfBirth;
+            RoleType = roleType;
         }
     }
 }

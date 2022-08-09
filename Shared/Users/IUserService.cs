@@ -14,6 +14,8 @@ namespace Faith.Shared.Users
         //Task<UserDto.Index> GetDetailAsyncByAuth0Id(string auth0Id);
         Task<int> CreateAsync(UserDto.Create model);
         Task UpdateAsync(UserDto.Update model);
-        Task<bool> DeleteAsync(string auth0Id);
+
+        //param string auth0Id
+        Task<bool> DeleteAsync(int userId);
     }
 }

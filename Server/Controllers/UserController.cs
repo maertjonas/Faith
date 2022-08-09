@@ -24,5 +24,30 @@ namespace Faith.Server.Controllers
         [SwaggerResponse(200, "Ok")]
         public Task<List<UserDto.Index>> GetIndexAsync() => _userService.GetIndexAsync();
 
+        /*[HttpPost]
+        [SwaggerOperation(Summary = "Registers a user to the database", Description = "Registers a user to the database")]
+        [SwaggerResponse(201, "Created")]
+        [SwaggerResponse(400, "Bad Request")]
+        public async Task<ActionResult<int>> CreateAsync(UserDto.Create model)
+        {
+            var userId = await _userService.CreateAsync(model);
+            return CreatedAtAction(nameof(CreateAsync), new { id = userId }, model);
+        }*/
+
+
+
+        [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Deletes user by id", Description = "Deletes user by id")]
+        [SwaggerResponse(201, "No Content")]
+        [SwaggerResponse(404, "Not Found")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var isDeleted = await _userService.DeleteAsync(id);
+            if (!isDeleted) return NotFound();
+            return NoContent();
+        }
+
+
+
     }
 }

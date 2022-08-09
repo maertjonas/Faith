@@ -37,7 +37,7 @@ namespace Faith.Shared.Users
             public string DateOfBirth { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
             public RoleType RoleType { get; set; }
             //Gender
-            public List<UserDto.Index> Juniors { get; set; }
+            //public List<UserDto.Index> Juniors { get; set; }
 
 
             public class Validator : AbstractValidator<UserDto.Create>
