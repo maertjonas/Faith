@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using Faith.Shared.RoleTypes;
+using Faith.Shared.Genders;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +27,13 @@ namespace Faith.Shared.Users
         {
             public string FirstName { get; set; }
             public string LastName { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
+            public string DateOfBirth { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+            public RoleType RoleType { get; set; }
+            //Gender
+            public List<UserDto.Index> Juniors { get; set; }
+
 
             public class Validator : AbstractValidator<UserDto.Create>
             {
@@ -32,6 +41,7 @@ namespace Faith.Shared.Users
                 {
                     RuleFor(user => user.FirstName).NotNull().WithName("First name").WithMessage("Please ensure that you have entered your {PropertyName}");
                     RuleFor(user => user.LastName).NotNull().WithName("Last name").WithMessage("Please ensure that you have entered your {PropertyName}");
+                    //Todo rules
                 }
             }
         }
