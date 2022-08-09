@@ -23,6 +23,20 @@ namespace Services.Posts
             .AsNoTracking()
             .Where(p => p.Id == id);
 
+        public async Task<PostDto.Detail> GetPostAsync(int id)
+        {
+            await Task.Delay(100);
+            return _context.Posts.Include(p => p.Comments).Where(p => p.Id == id).AsNoTracking().Select(p => new PostDto.Detail
+            {
+                Id = p.Id,
+                Text = p.Text,
+                Date = p.Date,
+                Pinned = p.Pinned,
+                Archive = p.Archive,
+                Comments = CommentsToCommentDtoConverter(p.Comments)
+            }).AsSingleQuery().SingleOrDefault()!;
+        }
+
         public async Task<List<PostDto.Detail>> GetPostAsync()
         {
             
@@ -38,6 +52,8 @@ namespace Services.Posts
             }).AsSingleQuery().ToList()!;
         }
 
+        
+
         public Task<PostDto.Detail> GetDetailAsync(int id)
         {
             throw new NotImplementedException();
@@ -51,9 +67,13 @@ namespace Services.Posts
             return post.Entity.Id;
         }
 
-        public Task<bool> RemovePostAysync(int id)
+        public async Task<bool> RemovePostAysync(int id)
         {
-            throw new NotImplementedException();
+            var post = _context.Posts.Where(p => p.Id == id).SingleOrDefault();
+            _context.Posts.Remove(post);
+
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         public Task UpdatePostAsync(int id, PostDto.Create model)

@@ -15,6 +15,15 @@ namespace Services.Data
         public DbSet<Post> Posts => Set<Post>();
         public DbSet<Comment> Comments => Set<Comment>();
         public DbSet<User> Users => Set<User>();
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Post>()
+                    .HasMany( s => s.Comments)
+                    .WithOne()
+                    .OnDelete(DeleteBehavior.Cascade);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
 
