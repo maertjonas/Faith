@@ -50,12 +50,19 @@ namespace Domain.Posts
             this.Date = date;
         }
 
-        public Post(string text, string date, bool archive, bool pinned, string image, List<Comment> comments) : this(text, date)
+        public Post(string text, string date, bool archive, bool pinned, string image) : this(text, date)
         {
             this.Archive = archive;
             this.Pinned = pinned;
             this.Image = image;
+        }
+
+        public Post(string text, string date, bool archive, bool pinned, string image, List<Comment> comments) : 
+            this(text, date, archive, pinned, image)
+        {
             this.Comments = comments;
         }
+
+        
     }
 }

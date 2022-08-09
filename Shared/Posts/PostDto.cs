@@ -30,7 +30,7 @@ namespace Faith.Shared.Posts
             public string Date { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
             public bool Archive { get; set; }
             public bool Pinned { get; set; }
-            public List<CommentDto.Index> Comments { get; set; }
+            public string Image { get; set; }
 
             public class Validator : AbstractValidator<Create>
             {

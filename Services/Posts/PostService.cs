@@ -43,9 +43,12 @@ namespace Services.Posts
             throw new NotImplementedException();
         }
 
-        public Task<int> AddPostAsync(PostDto.Create model)
+        public async Task<int> AddPostAsync(PostDto.Create model)
         {
-            throw new NotImplementedException();
+            var p = new Post(model.Date, model.Text, model.Archive, model.Pinned, model.Image) { };
+            var post = _context.Posts.Add(p);
+            await _context.SaveChangesAsync();
+            return post.Entity.Id;
         }
 
         public Task<bool> RemovePostAysync(int id)
