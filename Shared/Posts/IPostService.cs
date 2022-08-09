@@ -8,12 +8,18 @@ namespace Faith.Shared.Posts
 {
     public interface IPostService
     {
-        Task<List<PostDto.Detail>> GetPostAsync();
+        
         Task<PostDto.Detail> GetPostAsync(int id);
         Task<PostDto.Detail> GetDetailAsync(int id);
+
+        Task<List<PostDto.Detail>> GetPostAsync();
+
         Task<int> AddPostAsync(PostDto.Create model);
-        Task<bool> RemovePostAysync(int id);
         Task UpdatePostAsync(PostDto.Create model);
+        Task<bool> RemovePostAysync(int id);
+
+
+
 
 
         /*Task<int> AddPostAsync(PostDto.Create model);

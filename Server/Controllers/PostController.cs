@@ -24,6 +24,12 @@ namespace Faith.Server.Controllers
         [SwaggerResponse(200, "Ok")]
         public Task<List<PostDto.Detail>> GetPostAsync() => _postService.GetPostAsync();
 
+        [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Get a post by id", Description = "Returns a post by given parameter Id")]
+        [SwaggerResponse(200, "Ok")]
+        [SwaggerResponse(404, "Not found")]
+        public Task<PostDto.Detail> GetPostByIdAsync(int id) => _postService.GetPostAsync(id)!;
+
 
         //[Authorize(Roles = "")]
         [HttpPost]
@@ -34,19 +40,6 @@ namespace Faith.Server.Controllers
         {
             var postId = await _postService.AddPostAsync(model);
             return CreatedAtAction(nameof(Create), new { id = postId }, model);
-        }
-
-        [HttpDelete("{id}")]
-        [SwaggerOperation(Summary = "Deletes post by id", Description = "Deletes post")]
-        [SwaggerResponse(201, "No Content")]
-        [SwaggerResponse(404, "Not Found")]
-        public async Task<IActionResult> RemovePostAysync(int id)
-        {
-            var post = await _postService.GetPostAsync(id);
-            if (post is null)
-                return NotFound();
-            await _postService.RemovePostAysync(id);
-            return NoContent();
         }
 
         //[Authorize(Roles = "")]
@@ -68,5 +61,20 @@ namespace Faith.Server.Controllers
 
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Deletes post by id", Description = "Deletes post")]
+        [SwaggerResponse(201, "No Content")]
+        [SwaggerResponse(404, "Not Found")]
+        public async Task<IActionResult> RemovePostAysync(int id)
+        {
+            var post = await _postService.GetPostAsync(id);
+            if (post is null)
+                return NotFound();
+            await _postService.RemovePostAysync(id);
+            return NoContent();
+        }
+
+        
     }
 }
