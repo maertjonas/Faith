@@ -83,8 +83,6 @@ namespace Services.Posts
 
         private static List<CommentDto.Index> CommentsToCommentDtoConverter(List<Comment> commentsList)
         {
-
-            Console.WriteLine("CALLED");
             List<CommentDto.Index> commentDtoList = new List<CommentDto.Index>();
             CommentDto.Index cDto;
             foreach(Comment c in commentsList)
