@@ -48,5 +48,25 @@ namespace Faith.Server.Controllers
             await _postService.RemovePostAysync(id);
             return NoContent();
         }
+
+        //[Authorize(Roles = "")]
+        [HttpPut("{id}")]
+        [SwaggerOperation(Summary = "Updates post by id", Description = "Updates post")]
+        [SwaggerResponse(201, "No Content")]
+        [SwaggerResponse(400, "Bad Request")]
+        [SwaggerResponse(404, "Not Found")]
+        public async Task<IActionResult> UpdateAsync(int id, PostDto.Create model)
+        {
+            //Should be Update model
+            //Todo
+            var post = await _postService.GetPostAsync(id);
+
+            if (post is null)
+                return NotFound();
+
+            await _postService.UpdatePostAsync(model);
+
+            return NoContent();
+        }
     }
 }

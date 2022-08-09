@@ -20,5 +20,12 @@ namespace Domain.Comments
             set { text = Guard.Against.NullOrWhiteSpace(value, nameof(text)); }
         }
 
+        public Comment() {}
+
+        public Comment(string date, string text)
+        {
+            this.date = date;
+            this.text = text;
+        }
     }
 }

@@ -26,6 +26,7 @@ namespace Faith.Shared.Posts
 
         public class Create
         {
+            public int Id { get; set; }
             public string Text { get; set; } = null;
             public string Date { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
             public bool Archive { get; set; }
@@ -40,6 +41,11 @@ namespace Faith.Shared.Posts
                     RuleFor(x => x.Date).NotNull().NotEmpty().WithName("Date");
                 }
             }
+        }
+
+        public class Update : Create
+        {
+            public int Id { get; set; }
         }
     }
 }

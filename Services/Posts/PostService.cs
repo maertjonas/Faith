@@ -76,16 +76,28 @@ namespace Services.Posts
             return true;
         }
 
-        public Task UpdatePostAsync(int id, PostDto.Create model)
+        public async Task UpdatePostAsync(PostDto.Create model)
         {
-            throw new NotImplementedException();
+           
+            Post p = _context.Posts.Where(p => p.Id == model.Id).SingleOrDefault()!;
+            
+            if (p != null)
+            {
+                p.Text = model.Text;
+                p.Date = model.Date;
+                p.Archive = model.Archive;
+                p.Pinned = model.Pinned;
+                p.Image = model.Image;
+            }
+            await _context.SaveChangesAsync();
+            return;
         }
 
         private static List<CommentDto.Index> CommentsToCommentDtoConverter(List<Comment> commentsList)
         {
             List<CommentDto.Index> commentDtoList = new List<CommentDto.Index>();
             CommentDto.Index cDto;
-            foreach(Comment c in commentsList)
+            foreach(Comment c in commentsList) 
             {
                 cDto = new CommentDto.Index
                 {
@@ -97,5 +109,17 @@ namespace Services.Posts
             }
             return commentDtoList;
         }
+
+        /*private static List<Comment> CommentDtoToCommentsConverter(List<CommentDto.Index> commentDtoList)
+        {
+            List<Comment> commentList = new List<Comment>();
+            Comment c;
+            foreach(CommentDto.Index cDto in commentDtoList)
+            {
+                c = new Comment(cDto.Date, cDto.Text);
+                commentList.Add(c);
+            }
+            return commentList;
+        }*/
     }
 }

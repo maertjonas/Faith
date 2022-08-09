@@ -13,7 +13,7 @@ namespace Faith.Shared.Posts
         Task<PostDto.Detail> GetDetailAsync(int id);
         Task<int> AddPostAsync(PostDto.Create model);
         Task<bool> RemovePostAysync(int id);
-        Task UpdatePostAsync(int id, PostDto.Create model);
+        Task UpdatePostAsync(PostDto.Create model);
 
 
         /*Task<int> AddPostAsync(PostDto.Create model);
