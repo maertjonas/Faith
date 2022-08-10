@@ -61,7 +61,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.ConfigureSwaggerGen(options =>
 {
-    options.CustomSchemaIds(x => $"{x.DeclaringType!.Name!}.{x.Name}");
+    options.CustomSchemaIds(x => $"{x.DeclaringType.Name}.{x.Name}");
 
 });
 
@@ -90,6 +90,7 @@ else
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
 
 
 app.UseHttpsRedirection();
