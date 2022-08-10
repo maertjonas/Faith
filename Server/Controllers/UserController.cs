@@ -27,7 +27,13 @@ namespace Faith.Server.Controllers
         [SwaggerOperation(Summary = "Get a user by id", Description = "Returns a user by given parameter Id")]
         [SwaggerResponse(200, "Ok")]
         [SwaggerResponse(404, "Not found")]
-        public Task<UserDto.Index> Get(int id) => _userService.GetIndexAsync(id);
+        public Task<UserDto.Detail> GetDetailAsync(int id) => _userService.GetDetailAsync(id);
+
+        /*[HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Get a user by id", Description = "Returns a user by given parameter Id")]
+        [SwaggerResponse(200, "Ok")]
+        [SwaggerResponse(404, "Not found")]
+        public Task<UserDto.Detail> GetDetailAsync(int id) => _userService.GetDetailAsync(id);*/
 
         [HttpPost]
         [SwaggerOperation(Summary = "Registers a user to the database", Description = "Registers a user to the database")]
@@ -47,7 +53,7 @@ namespace Faith.Server.Controllers
         public async Task<IActionResult> UpdateAsync(UserDto.Update model)
         {
             //GetDetailAsync
-            var existingUser = await _userService.GetIndexAsync(model.Id);
+            var existingUser = await _userService.GetDetailAsync(model.Id);
 
             if (existingUser is null)
                 return NotFound();

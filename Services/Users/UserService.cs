@@ -23,19 +23,35 @@ namespace Services.Users
             {
                 Id = u.Id,
                 FirstName = u.FirstName,
-                LastName = u.LastName,
-                Email = u.Email,
+                LastName = u.LastName
+                /*Email = u.Email,
                 Password = u.Password,
                 RoleType = u.RoleType,
-                Juniors = UsersToUserDtoConverter(u.Juniors)
+                Juniors = UsersToUserDtoConverter(u.Juniors)*/
             })).ToListAsync();
             return users;
         }
 
-        public async Task<UserDto.Index> GetIndexAsync(int id)
+        /*public async Task<UserDto.Index> GetIndexAsync(int id)
         {
             await Task.Delay(100);
             return _context.Users.Include(u => u.Juniors).Where(u => u.Id == id).AsNoTracking().Select(u => new UserDto.Index
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName
+                *//*Email = u.Email,
+                Password = u.Password,
+                RoleType = u.RoleType,
+                Juniors = UsersToUserDtoConverter(u.Juniors)*//*
+            }).AsSingleQuery().SingleOrDefault()!;
+        }*/
+
+
+        public async Task<UserDto.Detail> GetDetailAsync(int userId)
+        {
+            await Task.Delay(100);
+            return _context.Users.Include(u => u.Juniors).Where(u => u.Id == userId).AsNoTracking().Select(u => new UserDto.Detail
             {
                 Id = u.Id,
                 FirstName = u.FirstName,
@@ -45,12 +61,6 @@ namespace Services.Users
                 RoleType = u.RoleType,
                 Juniors = UsersToUserDtoConverter(u.Juniors)
             }).AsSingleQuery().SingleOrDefault()!;
-        }
-
-
-        public Task<UserDto.Index> GetDetailAsync(int userId)
-        {
-            throw new NotImplementedException();
         }
 
         public async Task<int> CreateAsync(UserDto.Create model)
@@ -92,7 +102,7 @@ namespace Services.Users
             UserDto.Index uDto;
             foreach(User u in usersList)
             {
-                uDto = new UserDto.Index
+                uDto = new UserDto.Detail
                 {
                     Id = u.Id,
                     FirstName = u.FirstName,
