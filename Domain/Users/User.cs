@@ -1,8 +1,8 @@
 ﻿using Ardalis.GuardClauses;
 using Domain.Common;
 using Faith.Shared.RoleTypes;
-using Faith.Shared.Gender;
 using System.Text.Json.Serialization;
+using Faith.Shared.Genders;
 
 namespace Domain.Users
 {
@@ -51,8 +51,6 @@ namespace Domain.Users
 
         [JsonIgnore]
         private List<User> juniors;
-        private RoleType roleType1;
-
         public List<User> Juniors
         {
             get { return juniors; }
@@ -79,12 +77,13 @@ namespace Domain.Users
             LastName = lastName;
         }
 
-        public User(string firstName, string lastName, string email, string password, string dateOfBirth, RoleType roleType) : this(firstName, lastName)
+        public User(string firstName, string lastName, string email, string password, string dateOfBirth, RoleType roleType, Gender gender) : this(firstName, lastName)
         {
             Email = email;
             Password = password;
             DateOfBirth = dateOfBirth;
             RoleType = roleType;
+            Gender = gender;
         }
     }
 }

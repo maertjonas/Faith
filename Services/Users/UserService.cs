@@ -28,8 +28,23 @@ namespace Services.Users
                 Password = u.Password,
                 RoleType = u.RoleType,
                 Juniors = UsersToUserDtoConverter(u.Juniors)
-            })).OrderBy(u => u.LastName).ThenBy(u => u.FirstName).ToListAsync();
+            })).ToListAsync();
             return users;
+        }
+
+        public async Task<UserDto.Index> GetIndexAsync(int id)
+        {
+            await Task.Delay(100);
+            return _context.Users.Include(u => u.Juniors).Where(u => u.Id == id).AsNoTracking().Select(u => new UserDto.Index
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email,
+                Password = u.Password,
+                RoleType = u.RoleType,
+                Juniors = UsersToUserDtoConverter(u.Juniors)
+            }).AsSingleQuery().SingleOrDefault()!;
         }
 
 
@@ -40,7 +55,7 @@ namespace Services.Users
 
         public async Task<int> CreateAsync(UserDto.Create model)
         {
-            var u = new User(model.FirstName, model.LastName, model.Email, model.Password, model.DateOfBirth, model.RoleType) { };
+            var u = new User(model.FirstName, model.LastName, model.Email, model.Password, model.DateOfBirth, model.RoleType, model.Gender) { };
             var user = _context.Users.Add(u);
             await _context.SaveChangesAsync();
             return user.Entity.Id;
@@ -55,9 +70,20 @@ namespace Services.Users
             return true;
         }
 
-        public Task UpdateAsync(UserDto.Update model)
+        public async Task UpdateAsync(UserDto.Update model)
         {
-            throw new NotImplementedException();
+            User u = _context.Users.Where(u => u.Id == model.Id).SingleOrDefault()!;
+            if(u != null)
+            {
+                u.FirstName = model.FirstName;  
+                u.LastName = model.LastName;
+                u.Email = model.Email;
+                u.Password = model.Password;
+                u.DateOfBirth = model.DateOfBirth;
+                u.RoleType = model.RoleType;
+                u.Gender = model.Gender;
+            }
+            await _context.SaveChangesAsync();
         }
 
         private static List<UserDto.Index> UsersToUserDtoConverter(List<User> usersList)

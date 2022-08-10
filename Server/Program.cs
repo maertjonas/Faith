@@ -32,6 +32,7 @@ builder.Services.AddDbContext<ApplicationContext>(
 
 builder.Services.AddScoped<DbInitializer>();
 builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 // Fluentvalidation middleware?
 
@@ -55,13 +56,14 @@ builder.Services.AddSwaggerGen(options =>
         }
     });
     options.CustomSchemaIds(type => type.ToString());
+    options.UseInlineDefinitionsForEnums();
 });
 
-/*builder.Services.ConfigureSwaggerGen(options =>
+builder.Services.ConfigureSwaggerGen(options =>
 {
     options.CustomSchemaIds(x => $"{x.DeclaringType.Name}.{x.Name}");
-    
-});*/
+
+});
 
 
 var app = builder.Build();

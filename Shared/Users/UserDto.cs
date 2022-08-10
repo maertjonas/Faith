@@ -1,4 +1,5 @@
-﻿using Faith.Shared.RoleTypes;
+﻿using Faith.Shared.Genders;
+using Faith.Shared.RoleTypes;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -19,13 +20,8 @@ namespace Faith.Shared.Users
             public string Password { get; set; }
             public string DateOfBirth { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
             public RoleType RoleType { get; set; }
-            //Gender
+            public Gender Gender { get; set; }
             public List<UserDto.Index> Juniors { get; set; }
-        }
-
-        public class Detail : Index
-        {
-            public DateTime DateOfBirth { get; set; }
         }
 
         public class Create
@@ -36,8 +32,8 @@ namespace Faith.Shared.Users
             public string Password { get; set; }
             public string DateOfBirth { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
             public RoleType RoleType { get; set; }
-            //Gender
-            //public List<UserDto.Index> Juniors { get; set; }
+            public Gender Gender { get; set; }
+            //?public List<UserDto.Index> Juniors { get; set; }
 
 
             public class Validator : AbstractValidator<UserDto.Create>
@@ -51,6 +47,9 @@ namespace Faith.Shared.Users
             }
         }
 
-        public class Update : Create { }
+        public class Update : Create 
+        {
+            public int Id { get; set; }
+        }
     }
 }

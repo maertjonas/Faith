@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Faith.Shared.Gender
+namespace Faith.Shared.Genders
 {
     public enum Gender
     {

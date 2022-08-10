@@ -89,7 +89,7 @@ namespace Services.Data
                     Password = "Testje123",
                     DateOfBirth = DateTime.Now.AddYears(-60).ToString("yyyyMMddHHmmssffff"),
                     RoleType = Faith.Shared.RoleTypes.RoleType.Mentor,
-                    Gender = Faith.Shared.Gender.Gender.Male,
+                    Gender = Faith.Shared.Genders.Gender.Male,
                     Juniors = new List<User>{
                             new User
                             {
@@ -99,7 +99,7 @@ namespace Services.Data
                                 Password = "Testje123",
                                 DateOfBirth = DateTime.Now.AddYears(-15).ToString("yyyyMMddHHmmssffff"),
                                 RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
-                                Gender = Faith.Shared.Gender.Gender.Male
+                                Gender = Faith.Shared.Genders.Gender.Male
                             },
                             new User
                             {
@@ -109,7 +109,7 @@ namespace Services.Data
                                 Password = "Testje123",
                                 DateOfBirth = DateTime.Now.AddYears(-13).ToString("yyyyMMddHHmmssffff"),
                                 RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
-                                Gender = Faith.Shared.Gender.Gender.Female
+                                Gender = Faith.Shared.Genders.Gender.Female
                             },
                             new User
                             {
@@ -119,7 +119,7 @@ namespace Services.Data
                                 Password = "Testje123",
                                 DateOfBirth = DateTime.Now.AddYears(-14).ToString("yyyyMMddHHmmssffff"),
                                 RoleType = Faith.Shared.RoleTypes.RoleType.Junior,
-                                Gender = Faith.Shared.Gender.Gender.Other
+                                Gender = Faith.Shared.Genders.Gender.Other
                         }
                     }
                 }
