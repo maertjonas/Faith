@@ -83,7 +83,7 @@ namespace Services.Users
         public async Task UpdateAsync(UserDto.Update model)
         {
             User u = _context.Users.Where(u => u.Id == model.Id).SingleOrDefault()!;
-            if(u != null)
+            if(u is not null)
             {
                 u.FirstName = model.FirstName;  
                 u.LastName = model.LastName;

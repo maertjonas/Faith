@@ -61,7 +61,7 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.ConfigureSwaggerGen(options =>
 {
-    options.CustomSchemaIds(x => $"{x.DeclaringType.Name}.{x.Name}");
+    options.CustomSchemaIds(x => $"{x.DeclaringType!.Name!}.{x.Name}");
 
 });
 

@@ -24,7 +24,7 @@ namespace Services.Data
         }
         public async void Seeder()
         {
-
+            await Task.Delay(100);
             Random rand = new Random();
             DateTime start = new DateTime(1995, 1, 1);
             int range = (DateTime.Today - start).Days;
