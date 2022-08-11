@@ -1,4 +1,4 @@
-﻿<div class="card is-clickable" >
+﻿@*<div class="card is-clickable" >
     <div class="card-content">
         <div class="content">
             <h5>@post.Id</h5>
@@ -14,4 +14,45 @@
             
         </div>
     </div>
-</div>
+</div>*@
+
+<MudCard>
+    <MudCardHeader>
+        <CardHeaderAvatar>
+            <MudAvatar Color="Color.Secondary">I</MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText Typo="Typo.body1">@post.Id</MudText>
+            <MudText Typo="Typo.body2">@post.Date</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
+        </CardHeaderActions>
+    </MudCardHeader>
+    @*<MudCardMedia Image="images/pilars.jpg" Height="250" />*@
+    <MudCardContent>
+        <MudText Typo="Typo.body2">@post.Text</MudText>
+    </MudCardContent>
+    <MudCardActions>
+        <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Default" />
+        <MudIconButton Icon="@Icons.Material.Filled.Share" Color="Color.Default" />
+    </MudCardActions>
+    @foreach (var comment in post.Comments)
+        {
+            <MudCard Class="pa-4 ma-5">
+                <MudCardHeader>
+                    <CardHeaderAvatar>
+                        <MudAvatar Color="Color.Success">P</MudAvatar>
+                    </CardHeaderAvatar>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.body1">@comment.Id</MudText>
+                        <MudText Typo="Typo.body2">@comment.Date</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudText Typo="Typo.body2">@comment.Text</MudText>
+                </MudCardContent>
+            </MudCard>
+     }
+    
+</MudCard>
