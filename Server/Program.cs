@@ -3,9 +3,9 @@ using Faith.Shared.Users;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Services.Data;
-using Services.Posts;
-using Services.Users;
+using Service.Data;
+using Service.Posts;
+using Service.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -103,7 +103,7 @@ app.UseRouting();
 
 app.MapRazorPages();
 app.MapControllers();
-app.MapFallbackToFile("index.html");
+/*app.MapFallbackToFile("index.html");*/
 app.Seed();
 
 app.Run();

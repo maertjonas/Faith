@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Services.Data.Configurations
+namespace Service.Data.Configurations
 {
     public class BusConfiguration : IEntityTypeConfiguration<Post>
     {

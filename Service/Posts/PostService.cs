@@ -3,9 +3,9 @@ using Domain.Posts;
 using Faith.Shared.Comments;
 using Faith.Shared.Posts;
 using Microsoft.EntityFrameworkCore;
-using Services.Data;
+using Service.Data;
 
-namespace Services.Posts
+namespace Service.Posts
 {
     public class PostService : IPostService
     {

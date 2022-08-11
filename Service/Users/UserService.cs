@@ -1,9 +1,9 @@
 ﻿using Domain.Users;
 using Faith.Shared.Users;
 using Microsoft.EntityFrameworkCore;
-using Services.Data;
+using Service.Data;
 
-namespace Services.Users
+namespace Service.Users
 {
     public class UserService : IUserService
     {

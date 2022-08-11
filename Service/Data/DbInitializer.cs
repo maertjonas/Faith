@@ -2,7 +2,7 @@
 using Domain.Posts;
 using Domain.Users;
 
-namespace Services.Data
+namespace Service.Data
 {
     public  class DbInitializer
     {

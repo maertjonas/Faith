@@ -3,7 +3,7 @@ using Domain.Comments;
 using Domain.Users;
 using Microsoft.EntityFrameworkCore;
 
-namespace Services.Data
+namespace Service.Data
 {
     public class ApplicationContext : DbContext
     {
