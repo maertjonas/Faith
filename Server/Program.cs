@@ -13,8 +13,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IPostService, PostService>();
 
 builder.Services.AddEndpointsApiExplorer();
 
@@ -77,11 +75,11 @@ if (app.Environment.IsDevelopment())
     {
         options.SerializeAsV2 = true;
     });
-    app.UseSwaggerUI(options =>
+    /*app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("./swagger/v1/swagger.json", "v1");
         options.RoutePrefix = string.Empty;
-    });
+    });*/
 
 }
 else
