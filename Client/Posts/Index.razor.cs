@@ -6,13 +6,13 @@ namespace Faith.Client.Posts
     public partial class Index
     {
 
-        [Inject] public IPostService PostService { get; set; }
+        [Inject] public IPostService? PostService { get; set; }
 
-        public PostDto.Detail post;
+        public List<PostDto.Detail>? posts;
 
         protected override async Task OnInitializedAsync()
         {
-            post = await PostService.GetPostAsync(1);
+            posts = await PostService.GetPostAsync();
         }
     }
 }

@@ -13,27 +13,13 @@ namespace Faith.Client.Posts
             this.client = client;
         }
 
-        public async Task<PostDto.Detail> GetPostAsync(int id)
+        public async Task<List<PostDto.Detail>> GetPostAsync()
         {
-            var response = await client.GetFromJsonAsync<PostDto.Detail>($"{endpoint}/{id}");
+            var response = await client.GetFromJsonAsync<List<PostDto.Detail>>(endpoint);
             return response;
         }
 
-
-
-
-        public async Task<List<PostDto.Detail>> GetPostAsync()
-        {
-            //
-            /*var response = await client.GetFromJsonAsync<List<PostDto.Detail>>(endpoint);
-            Console.WriteLine(response);
-            return response;*/
-            throw new NotImplementedException();
-        }
-
         
-
-
 
 
         public Task<int> AddPostAsync(PostDto.Create model)
@@ -54,6 +40,11 @@ namespace Faith.Client.Posts
         }
 
         public Task UpdatePostAsync(PostDto.Create model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<PostDto.Detail> GetPostAsync(int id)
         {
             throw new NotImplementedException();
         }

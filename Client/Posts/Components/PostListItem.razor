@@ -1,9 +1,17 @@
 ﻿<div class="card is-clickable" >
     <div class="card-content">
         <div class="content">
-            <h1 class="title is-size-4">@Post.Id</h1>
-            <p>@Post.Date</p>
-            <p>@Post.Text</p>
+            <h5>@post.Id</h5>
+            <h6>@post.Date</h6>
+            <h6>@post.Text</h6>
+            <div class="comments">
+                @foreach (var comment in post.Comments)
+                {
+                    <p>@comment.Date</p>
+                    <p>@comment.Text</p>
+                }
+            </div>
+            
         </div>
     </div>
 </div>

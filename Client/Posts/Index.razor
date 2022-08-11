@@ -1,5 +1,18 @@
-﻿@page "/test"
+﻿@page "/"
+@page "/Post"
 
 
-<h3>Index</h3>
 
+@if(posts is null){
+    <p>Loading... </p>
+} else {
+    <div class="column">
+    <div class="columns is-multiline">
+       @foreach(var post in posts){
+            <div class="column is-half">
+                <PostListItem post="post"/>
+            </div>
+        }
+    </div>
+</div>
+}
