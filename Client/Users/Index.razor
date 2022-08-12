@@ -1,20 +1,15 @@
 ﻿@page "/users"
+@using System.Net.Http.Json
+@using Faith.Shared.Users
+@inject HttpClient httpClient
 
-@if (users is null)
-{
-    <p>Loading... </p>
-}
-else
-{
-    <div class="column">
-        <div class="columns is-multiline">
-            @foreach (var user in users)
-            {
-                <div class="column is-half">
-                    @user.FirstName
-                    @user.LastName
-                </div>
-            }
-        </div>
-    </div>
-}
+<MudDataGrid Items="@users">
+    <Columns>
+        <Column T="UserDto.Index" Field="Id"/>
+        <Column T="UserDto.Index" Field="FirstName" Title="First name"/>
+        <Column T="UserDto.Index" Field="LastName" Title="Last name"/>
+        <Column T="UserDto.Index" Field="DateOfBirth" Title="Date of birth"/>
+        <Column T="UserDto.Index" Field="Gender"/>
+    </Columns>
+</MudDataGrid>
+
