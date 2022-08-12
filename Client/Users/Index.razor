@@ -1,0 +1,20 @@
+﻿@page "/users"
+
+@if (users is null)
+{
+    <p>Loading... </p>
+}
+else
+{
+    <div class="column">
+        <div class="columns is-multiline">
+            @foreach (var user in users)
+            {
+                <div class="column is-half">
+                    @user.FirstName
+                    @user.LastName
+                </div>
+            }
+        </div>
+    </div>
+}

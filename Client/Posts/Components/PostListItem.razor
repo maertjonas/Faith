@@ -1,22 +1,4 @@
-﻿@*<div class="card is-clickable" >
-    <div class="card-content">
-        <div class="content">
-            <h5>@post.Id</h5>
-            <h6>@post.Date</h6>
-            <h6>@post.Text</h6>
-            <div class="comments">
-                @foreach (var comment in post.Comments)
-                {
-                    <p>@comment.Date</p>
-                    <p>@comment.Text</p>
-                }
-            </div>
-            
-        </div>
-    </div>
-</div>*@
-
-<MudCard>
+﻿<MudCard>
     <MudCardHeader>
         <CardHeaderAvatar>
             <MudAvatar Color="Color.Secondary">I</MudAvatar>

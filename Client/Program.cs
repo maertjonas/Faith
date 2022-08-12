@@ -7,6 +7,7 @@ using Faith.Client.Shared;
 using Faith.Shared.Users;
 using Faith.Client.Posts;
 using MudBlazor.Services;
+using Faith.Client.Users;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 builder.RootComponents.Add<App>("#app");
@@ -15,6 +16,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddMudServices();
 
 builder.Services.AddAuthorizationCore();
