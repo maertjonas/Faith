@@ -1,9 +1,38 @@
-﻿@page "/users"
+﻿@page "/"
+@page "/users"
 @using System.Net.Http.Json
 @using Faith.Shared.Users
 @inject HttpClient httpClient
+
+
+<MudButton Variant="Variant.Filled" OnClick="@(() => OpenDrawer(Anchor.End))" Color="Color.Success">Create new user</MudButton>
+
+<MudDrawer @bind-Open="@open" Width="@width" Height="@height" Anchor="@anchor" Elevation="1" Variant="@DrawerVariant.Temporary">
+    <MudDrawerHeader>
+        <MudText Typo="Typo.h6">Create a new user</MudText>
+    </MudDrawerHeader>
+    <MudNavMenu>
+        <MudNavLink Match="NavLinkMatch.All">Store</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All">Library</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All">Community</MudNavLink>
+    </MudNavMenu>
+</MudDrawer>
+
+@code{ 
+    bool open;
+    Anchor anchor;
+    string width = "400px", height = "100%";
+
+    void OpenDrawer(Anchor anchor)
+    {
+        open = true;
+        this.anchor = anchor;
+    }
+}
+
+
 <MudDataGrid T="UserDto.Index" Items="@users" Filterable="true" SortMode="SortMode.Multiple" QuickFilter="@_quickFilter"
-    Hideable="true">
+                Hideable="true">
     <ToolBarContent>
         <MudText Typo="Typo.h6">Users</MudText>
         <MudSpacer />
@@ -20,6 +49,9 @@
         <MudDataGridPager T="UserDto.Index" />
     </PagerContent>
 </MudDataGrid>
+
+
+
 
 
 @code {
@@ -44,3 +76,5 @@
         return false;
     };
 }
+
+
