@@ -15,7 +15,7 @@ namespace Faith.Shared.Posts
         Task<List<PostDto.Detail>> GetPostAsync();
 
         Task<int> AddPostAsync(PostDto.Create model);
-        Task UpdatePostAsync(PostDto.Create model);
+        Task UpdatePostAsync(int id, PostDto.Create model);
         Task<bool> RemovePostAysync(int id);
 
 

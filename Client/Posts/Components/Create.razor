@@ -1,0 +1,30 @@
+﻿
+
+<MudCard>
+    <MudCardContent>
+        <MudText>
+
+            <EditForm Model="@post" OnValidSubmit="@CreatePostAsync">
+                @*<FluentValidationValidator />*@
+    <ValidationSummary />
+
+    <div class="field">
+        <label class="label">Text</label>
+        <div class="control">
+            <InputText class="input" @bind-Value="post.Text" />
+        </div>
+    </div>
+
+                <MudItem xs="12" sm="6" md="4">
+                    <MudField Label="Standard" Variant="Variant.Text">Some Content <MudIcon Icon="@Icons.Material.Filled.Favorite" Color="@Color.Warning" /> follows here</MudField>
+                </MudItem>
+
+    <div class="buttons">
+        <MudButton Variant="Variant.Filled" Color="Color.Success" typeof="submit">Add</MudButton>
+        <MudButton Href="/" Variant="Variant.Filled" Color="Color.Error">Cancel</MudButton>
+    </div>
+
+</EditForm>
+        </MudText>
+    </MudCardContent>
+</MudCard>

@@ -14,5 +14,7 @@ namespace Faith.Client.Posts
         {
             posts = await PostService.GetPostAsync();
         }
+
+
     }
 }

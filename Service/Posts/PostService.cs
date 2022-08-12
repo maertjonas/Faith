@@ -76,10 +76,10 @@ namespace Service.Posts
             return true;
         }
 
-        public async Task UpdatePostAsync(PostDto.Create model)
+        public async Task UpdatePostAsync(int id, PostDto.Create model)
         {
            
-            Post p = _context.Posts.Where(p => p.Id == model.Id).SingleOrDefault()!;
+            Post p = _context.Posts.Where(p => p.Id == id).SingleOrDefault()!;
             
             if (p != null)
             {

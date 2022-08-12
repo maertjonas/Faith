@@ -57,7 +57,7 @@ namespace Faith.Server.Controllers
             if (post is null)
                 return NotFound();
 
-            await _postService.UpdatePostAsync(model);
+            await _postService.UpdatePostAsync(id, model);
 
             return NoContent();
         }

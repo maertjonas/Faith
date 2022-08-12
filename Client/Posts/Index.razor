@@ -2,6 +2,30 @@
 @page "/posts"
 
 <MudContainer MaxWidth="MaxWidth.Medium">
+
+            <MudButton Variant="Variant.Filled" OnClick="@(() => OpenDrawer(Anchor.End))" Color="Color.Success">Create new user</MudButton>
+
+            <MudDrawer @bind-Open="@open" Width="@width" Height="@height" Anchor="@anchor" Elevation="1" Variant="@DrawerVariant.Temporary">
+                <MudDrawerHeader>
+                    <MudText Typo="Typo.h6">Create a new post</MudText>
+                </MudDrawerHeader>
+                <Create></Create>
+
+
+            </MudDrawer>
+
+            @code {
+                bool open;
+                Anchor anchor;
+                string width = "400px", height = "100%";
+
+                void OpenDrawer(Anchor anchor)
+                {
+                open = true;
+                this.anchor = anchor;
+                }
+            }
+
     @if (posts is null)
     {
         <p>Loading... </p>
