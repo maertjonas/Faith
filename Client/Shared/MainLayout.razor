@@ -7,7 +7,7 @@
 <MudLayout>
     <MudAppBar>
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        My Application
+        Faith
     </MudAppBar>
     <MudDrawer @bind-Open="@_drawerOpen">
         <NavMenu/>
@@ -20,7 +20,7 @@
 </MudLayout>
 
 @code {
-    bool _drawerOpen = false;
+    bool _drawerOpen = true;
 
     void DrawerToggle()
     {
