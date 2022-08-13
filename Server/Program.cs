@@ -75,11 +75,11 @@ if (app.Environment.IsDevelopment())
     {
         options.SerializeAsV2 = true;
     });
-    app.UseSwaggerUI(options =>
+    /*app.UseSwaggerUI(options =>
     {
         options.SwaggerEndpoint("./swagger/v1/swagger.json", "v1");
         options.RoutePrefix = string.Empty;
-    });
+    });*/
 
 }
 else

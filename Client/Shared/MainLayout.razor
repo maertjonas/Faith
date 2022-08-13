@@ -1,8 +1,29 @@
 ﻿@inherits LayoutComponentBase
 
+
+@*<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <AccessControl />
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>*@
+
+
+
 <MudThemeProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
+
 
 <MudLayout>
     <MudAppBar>
@@ -13,14 +34,14 @@
         <NavMenu/>
     </MudDrawer>
     <MudMainContent>
-        @*<MudContainer MaxWidth="MaxWidth.Medium">*@
+        @*<MudContainer MaxWidth="MaxWidth.Medium"> *@
             @Body
-        @*</MudContainer>*@
+        @*</MudContainer> *@
     </MudMainContent>
 </MudLayout>
 
 @code {
-    bool _drawerOpen = true;
+    bool _drawerOpen = false;
 
     void DrawerToggle()
     {

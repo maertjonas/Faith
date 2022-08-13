@@ -3,6 +3,7 @@
 @using System.Net.Http.Json
 @using Faith.Shared.Users
 @inject HttpClient httpClient
+@attribute [Authorize]
 
 
 <MudButton Variant="Variant.Filled" OnClick="@(() => OpenDrawer(Anchor.End))" Color="Color.Success">Create new user</MudButton>
@@ -12,6 +13,7 @@
         <MudText Typo="Typo.h6">Create a new user</MudText>
     </MudDrawerHeader>
     <MudNavMenu>
+        @attribute [Authorize]
         <Faith.Client.Users.Components.CreateUser></Faith.Client.Users.Components.CreateUser>
     </MudNavMenu>
 </MudDrawer>
