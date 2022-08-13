@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using FluentAssertions.Common;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,10 +40,14 @@ builder.Services.Configure<CookiePolicyOptions>(options =>
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-}).AddCookie()
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultSignInScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddCookie().AddJwtBearer(options =>
+{
+    options.Authority = "https://dev-x6u3v-fg.us.auth0.com/";
+    options.Audience = "https://api.faith.com";
+})
    .AddOpenIdConnect("Auth0", options =>
    {
        // Set the authority to your Auth0 domain
