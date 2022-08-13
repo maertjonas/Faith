@@ -27,5 +27,5 @@ builder.Services.AddOidcAuthentication(options =>
 });
 
 builder.Services.AddAuthorizationCore();
-builder.Services.AddScoped<AuthenticationStateProvider, FakeAuthenticationProvider>();
+//builder.Services.AddScoped<AuthenticationStateProvider, FakeAuthenticationProvider>();
 await builder.Build().RunAsync();
