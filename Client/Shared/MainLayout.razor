@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 
 
-@*<div class="page">
+<div class="page">
     <div class="sidebar">
         <NavMenu />
     </div>
@@ -16,7 +16,7 @@
             @Body
         </article>
     </main>
-</div>*@
+</div>
 
 
 
@@ -24,7 +24,7 @@
 <MudDialogProvider />
 <MudSnackbarProvider />
 
-
+@*
 <MudLayout>
     <MudAppBar>
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
@@ -33,12 +33,12 @@
     <MudDrawer @bind-Open="@_drawerOpen">
         <NavMenu/>
     </MudDrawer>
-    <MudMainContent>
+    <MudMainContent>*@
         @*<MudContainer MaxWidth="MaxWidth.Medium"> *@
-            @Body
+            @*@Body*@
         @*</MudContainer> *@
-    </MudMainContent>
-</MudLayout>
+@*    </MudMainContent>
+</MudLayout>*@
 
 @code {
     bool _drawerOpen = false;
