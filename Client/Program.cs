@@ -20,6 +20,12 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddMudServices();
 
+builder.Services.AddOidcAuthentication(options =>
+{
+    builder.Configuration.Bind("Auth0", options.ProviderOptions);
+    options.ProviderOptions.ResponseType = "code";
+});
+
 builder.Services.AddAuthorizationCore();
 builder.Services.AddScoped<AuthenticationStateProvider, FakeAuthenticationProvider>();
 await builder.Build().RunAsync();
