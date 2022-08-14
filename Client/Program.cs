@@ -29,7 +29,7 @@ builder.Services.AddOidcAuthentication(options =>
     builder.Configuration.Bind("Auth0", options.ProviderOptions);
     options.ProviderOptions.ResponseType = "code";
     options.ProviderOptions.AdditionalProviderParameters.Add("audience", builder.Configuration["Auth0:Audience"]);
-});
+}).AddAccountClaimsPrincipalFactory<ArrayClaimsPrincipalFactory<RemoteUserAccount>>(); ;
 
 builder.Services.AddAuthorizationCore();
 //builder.Services.AddScoped<AuthenticationStateProvider, FakeAuthenticationProvider>();

@@ -6,10 +6,12 @@
             <MudButton Variant="Variant.Filled" OnClick="@(() => OpenDrawer(Anchor.End))" Color="Color.Success">Create new user</MudButton>
 
             <MudDrawer @bind-Open="@open" Width="@width" Height="@height" Anchor="@anchor" Elevation="1" Variant="@DrawerVariant.Temporary">
+                <AuthorizeView Roles="Administrator">
                 <MudDrawerHeader>
                     <MudText Typo="Typo.h6">Create a new post</MudText>
                 </MudDrawerHeader>
                 <Create></Create>
+                </AuthorizeView>
 
 
             </MudDrawer>
