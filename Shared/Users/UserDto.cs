@@ -18,11 +18,12 @@ namespace Faith.Shared.Users
             public string LastName { get; set; }
             public string DateOfBirth { get; set; } = DateTime.Now.ToString("yyyyMMddHHmmssffff");
             public Gender Gender { get; set; }
+            public string Email { get; set; }
         }
 
         public class Detail : Index
         {
-            public string Email { get; set; }
+            
             public string Password { get; set; }
             public RoleType RoleType { get; set; }
             public List<UserDto.Index> Juniors { get; set; }
